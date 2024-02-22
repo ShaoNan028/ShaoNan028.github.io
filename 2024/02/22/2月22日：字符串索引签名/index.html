@@ -16,22 +16,22 @@
   <meta name="author" content="Kangaroo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="已知字符串”str”，尝试通过obj[‘str’]获取对象 obj 的 str 属性值，但在 typescript 中语法报错。">
+    <meta name="description" content="已知字符串”str”，尝试通过 obj[‘str’]获取对象 obj 的 str 属性值，但在 typescript 中语法报错。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2月22日：TypeScript索引签名">
+<meta property="og:title" content="TypeScript索引签名">
 <meta property="og:url" content="https://shaonan028.github.io/2024/02/22/2%E6%9C%8822%E6%97%A5%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B4%A2%E5%BC%95%E7%AD%BE%E5%90%8D/index.html">
 <meta property="og:site_name" content="Kangaroo&#39;s Bolg">
-<meta property="og:description" content="已知字符串”str”，尝试通过obj[‘str’]获取对象 obj 的 str 属性值，但在 typescript 中语法报错。">
+<meta property="og:description" content="已知字符串”str”，尝试通过 obj[‘str’]获取对象 obj 的 str 属性值，但在 typescript 中语法报错。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-02-22T09:50:02.000Z">
-<meta property="article:modified_time" content="2024-02-22T15:28:29.353Z">
+<meta property="article:modified_time" content="2024-02-22T15:40:24.167Z">
 <meta property="article:author" content="Kangaroo">
 <meta property="article:tag" content="基础知识">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>2月22日：TypeScript索引签名 - Kangaroo&#39;s Bolg</title>
+  <title>TypeScript索引签名 - Kangaroo&#39;s Bolg</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="2月22日：TypeScript索引签名"></span>
+            <span id="subtitle" data-typed-text="TypeScript索引签名"></span>
           
         </div>
 
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          986 字
+          928 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          9 分钟
+          8 分钟
         
       </span>
     
@@ -268,13 +268,14 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">2月22日：TypeScript索引签名</h1>
+            <h1 id="seo-header">TypeScript索引签名</h1>
             
             
               <div class="markdown-body">
                 
-                <p>已知字符串”str”，尝试通过obj[‘str’]获取对象 obj 的 str 属性值，但在 typescript 中语法报错。</p>
+                <p>已知字符串”str”，尝试通过 obj[‘str’]获取对象 obj 的 str 属性值，但在 typescript 中语法报错。</p>
 <span id="more"></span>
+
 <h1 id="1-需求描述及实现方式"><a href="#1-需求描述及实现方式" class="headerlink" title="1. 需求描述及实现方式"></a>1. 需求描述及实现方式</h1><h2 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h2><p>在管理端配置自助端的首页功能菜单，在自助端显示配置开关开启的菜单。<br>比如，在管理端设置开启 a&#x2F;b&#x2F;c 功能菜单的开关，则在自助端显示 a&#x2F;b&#x2F;c 功能菜单按键，不显示其他内容。</p>
 <h2 id="2-实际实现方式"><a href="#2-实际实现方式" class="headerlink" title="2.实际实现方式"></a>2.实际实现方式</h2><ol>
 <li>涉及两个接口：setConfig 和 getConfig，分别用于保存配置和获取配置，接口的 data 为属性为布尔值的对象，表示是否显示对应的菜单项。</li>
@@ -284,22 +285,28 @@
 <p>定义了 SelfConfigFields，规定了接口数据的类型：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">SelfConfigFields</span> &#123;<br>  <span class="hljs-attr">showApply</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showApplyRecords</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showRegisterRecords</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showOffline</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showUnbindingDevice</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showUnbinding</span>: <span class="hljs-built_in">boolean</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>定义了functionList用于渲染功能菜单，其中showKey的属性值为字符串，指向配置查询接口中对应的属性名称。</p>
+<p>定义了 functionList 用于渲染功能菜单，其中 showKey 的属性值为字符串，指向配置查询接口中对应的属性名称。</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json">functionList = <span class="hljs-punctuation">[</span><br>  <span class="hljs-punctuation">&#123;</span><br>    logUrl<span class="hljs-punctuation">:</span> &#x27;assets/imgs/pc/apply-filing-green.png&#x27;<span class="hljs-punctuation">,</span><br>    name<span class="hljs-punctuation">:</span> &#x27;apply-filing&#x27;<span class="hljs-punctuation">,</span><br>    tip<span class="hljs-punctuation">:</span> &#x27;&#x27;<span class="hljs-punctuation">,</span><br>    index<span class="hljs-punctuation">:</span> &#x27;apply-filing&#x27;<span class="hljs-punctuation">,</span><br>    showKey<span class="hljs-punctuation">:</span> &#x27;showApply&#x27;<br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span>;<br></code></pre></td></tr></table></figure>
+
 <p>在尝试通过 getSelfConfig 方法过滤 show 为 false 的值时</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 获取自助中心配置</span><br><span class="hljs-comment">  */</span><br> <span class="hljs-title function_">getSelfConfig</span>(<span class="hljs-params"></span>) &#123;<br>   <span class="hljs-variable language_">this</span>.<span class="hljs-property">aggregationProtalService</span>.<span class="hljs-title function_">getSelfConfig</span>().<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;<br>     <span class="hljs-variable language_">this</span>.<span class="hljs-property">functionList</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">functionList</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> &#123;<br>       <span class="hljs-keyword">return</span> res[item.<span class="hljs-property">showKey</span>]<br>     &#125;)<br>   &#125;)<br> &#125;<br></code></pre></td></tr></table></figure>
 
 <p>在<code>return res[item.showKey]</code>处会出现报错:<br><span style="color:orangered;font-size:14px">元素隐式具有 “any” 类型，因为类型为 “string” 的表达式不能用于索引类型 “SelfConfigFields”。在类型 “SelfConfigFields” 上找不到具有类型为 “string” 的参数的索引签名。</span></p>
-<h1 id="2-知识点解析"><a href="#2-知识点解析" class="headerlink" title="2.知识点解析"></a>2.知识点解析</h1><h2 id="1-ES6-属性名表达式"><a href="#1-ES6-属性名表达式" class="headerlink" title="1. ES6 属性名表达式"></a>1. ES6 属性名表达式</h2><p>JavaScript 定义对象的属性，有两种方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 方法一</span><br>obj.<span class="hljs-property">foo</span> = <span class="hljs-literal">true</span>;<br><span class="hljs-comment">// 方法二</span><br>obj[<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&#x27;bc&#x27;</span>] = <span class="hljs-number">123</span>;<br></code></pre></td></tr></table></figure>
-<p>上面代码的方法一是直接用标识符作为属性名，方法二是用表达式作为属性名，这时要将表达式放在方括号之内。</p>
-<p>但是，如果使用字面量方式定义对象（使用大括号），在 ES5 中只能使用方法一（标识符）定义属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> obj = &#123;<br>  <span class="hljs-attr">foo</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">abc</span>: <span class="hljs-number">123</span><br>&#125;;<br></code></pre></td></tr></table></figure>
-<p>ES6 允许字面量定义对象时，用方法二（表达式）作为对象的属性名，即把表达式放在方括号内。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> propKey = <span class="hljs-string">&#x27;foo&#x27;</span>;<br><span class="hljs-keyword">let</span> obj = &#123;<br>  [propKey]: <span class="hljs-literal">true</span>,<br>  [<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&#x27;bc&#x27;</span>]: <span class="hljs-number">123</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+<h1 id="2-知识点解析"><a href="#2-知识点解析" class="headerlink" title="2.知识点解析"></a>2.知识点解析</h1><h2 id="1-读取对象属性"><a href="#1-读取对象属性" class="headerlink" title="1. 读取对象属性"></a>1. 读取对象属性</h2><ol>
+<li>通过点属性读取<br>点属性访问器是在 JavaScript 中访问对象属性的最常见和最直接的方式。它使用点 (.) 表示法来访问对象的特定属性。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> person = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>,<br>  <span class="hljs-attr">age</span>: <span class="hljs-number">30</span>,<br>&#125;;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person.<span class="hljs-property">name</span>);<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>通过方括号读取<br>直接通过字符串读取</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person[<span class="hljs-string">&quot;name&quot;</span>]);<br></code></pre></td></tr></table></figure>
+
+<p>通过变量读取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;name&quot;</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person[name]);<br></code></pre></td></tr></table></figure>
 
 
-<h2 id="2-TypeScript索引签名"><a href="#2-TypeScript索引签名" class="headerlink" title="2. TypeScript索引签名"></a>2. TypeScript索引签名</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h3><p>在 TypeScript 中，索引签名是一种定义对象类型的方式，它允许我们使用<strong>字符串或数字</strong>作为索引来访问对象的属性。</p>
+<h2 id="2-TypeScript-索引签名"><a href="#2-TypeScript-索引签名" class="headerlink" title="2. TypeScript 索引签名"></a>2. TypeScript 索引签名</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h3><p>在 TypeScript 中，索引签名是一种定义对象类型的方式，它允许我们使用<strong>字符串或数字</strong>作为索引来访问对象的属性。</p>
 <p>索引签名最主要的作用就是允许我们动态地添加或访问对象的属性，当我们事先不知道类型属性的所有名称及其值的形状时, 索引签名指定当一个对象被一个字符串索引时，它返回一个指定类型的值。</p>
 <h3 id="2-写法"><a href="#2-写法" class="headerlink" title="2. 写法"></a>2. 写法</h3><ol>
 <li><p>字符串索引签名：<code>[index:string]:type</code></p>
@@ -310,10 +317,13 @@
 <p>但是需要保证索引签名的类型和实际属性的类型相匹配：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Person</span> &#123;<br>  [<span class="hljs-attr">index</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>;<br>  <span class="hljs-attr">name</span>: <span class="hljs-built_in">number</span>;<br>  <span class="hljs-comment">//会报错，因为索引签名指定，当通过字符串索引时，对应的类型应该是string，但是name的类型为number</span><br>&#125;<br><span class="hljs-comment">//正确的写法：</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Person</span> &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-built_in">number</span>;<br>  <span class="hljs-comment">//以下三种写法都可以</span><br>  [<span class="hljs-attr">index</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span>;<br>  [<span class="hljs-attr">index</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">number</span>;<br>  [<span class="hljs-attr">index</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="3-索引签名的使用"><a href="#3-索引签名的使用" class="headerlink" title="3. 索引签名的使用"></a>3. 索引签名的使用</h3><p>对照上文的需求，应该在SelfConfigFields中添加<code>[key: string]: boolean;</code>:</p>
+<h3 id="3-索引签名的使用"><a href="#3-索引签名的使用" class="headerlink" title="3. 索引签名的使用"></a>3. 索引签名的使用</h3><p>对照上文的需求，应该在 SelfConfigFields 中添加<code>[key: string]: boolean;</code>:</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">SelfConfigFields</span> &#123;<br>  <span class="hljs-attr">showApply</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showApplyRecords</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showRegisterRecords</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showOffline</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showUnbindingDevice</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showUnbinding</span>: <span class="hljs-built_in">boolean</span>;<br>  [<span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">boolean</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>此时，通过字符串访问对象的属性时，就不会再报错了</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">const</span> showName = item.<span class="hljs-property">showKey</span>; <span class="hljs-comment">//&#x27;showApply&#x27;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res[showName]); <span class="hljs-comment">//res[&#x27;showApply&#x27;]</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7223679441901240376">js如何获取对象中的所有属性</a></p>
 
                 
               </div>
@@ -359,7 +369,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>2月22日：TypeScript索引签名</div>
+      <div>TypeScript索引签名</div>
       <div>https://shaonan028.github.io/2024/02/22/2月22日：字符串索引签名/</div>
     </div>
     <div class="license-meta">
