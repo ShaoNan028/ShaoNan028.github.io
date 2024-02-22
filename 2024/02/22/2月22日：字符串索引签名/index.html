@@ -16,22 +16,22 @@
   <meta name="author" content="Kangaroo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="最近想要生成一个分享海报，需要将背景图和二维码拼接后生成一个新的图片，并通过h5&#x2F;app下载。最初用canvas实现了图片拼接，但是在导出的时候遇到了问题，同样的海报尺寸，为什么h5导出的图片2M,app导出图片的尺寸却有12M？ 为了导出清晰度又高占内存又小的图片，赶紧恶补关于图像的知识，试图弄清楚图片的尺寸、像素值、清晰度和图片容量大小的关系。">
+    <meta name="description" content="已知字符串”str”，尝试通过obj[‘str’]获取对象 obj 的 str 属性值，但在 typescript 中语法报错。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="到底什么是像素值清晰度？">
-<meta property="og:url" content="https://shaonan028.github.io/2024/02/10/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%98%AF%E5%83%8F%E7%B4%A0%E5%80%BC%E6%B8%85%E6%99%B0%E5%BA%A6%EF%BC%9F/index.html">
+<meta property="og:title" content="2月22日：TypeScript索引签名">
+<meta property="og:url" content="https://shaonan028.github.io/2024/02/22/2%E6%9C%8822%E6%97%A5%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B4%A2%E5%BC%95%E7%AD%BE%E5%90%8D/index.html">
 <meta property="og:site_name" content="Kangaroo&#39;s Bolg">
-<meta property="og:description" content="最近想要生成一个分享海报，需要将背景图和二维码拼接后生成一个新的图片，并通过h5&#x2F;app下载。最初用canvas实现了图片拼接，但是在导出的时候遇到了问题，同样的海报尺寸，为什么h5导出的图片2M,app导出图片的尺寸却有12M？ 为了导出清晰度又高占内存又小的图片，赶紧恶补关于图像的知识，试图弄清楚图片的尺寸、像素值、清晰度和图片容量大小的关系。">
+<meta property="og:description" content="已知字符串”str”，尝试通过obj[‘str’]获取对象 obj 的 str 属性值，但在 typescript 中语法报错。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-10T14:22:33.000Z">
-<meta property="article:modified_time" content="2024-02-22T09:52:48.157Z">
+<meta property="article:published_time" content="2024-02-22T09:50:02.000Z">
+<meta property="article:modified_time" content="2024-02-22T15:28:29.353Z">
 <meta property="article:author" content="Kangaroo">
 <meta property="article:tag" content="基础知识">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>到底什么是像素值清晰度？ - Kangaroo&#39;s Bolg</title>
+  <title>2月22日：TypeScript索引签名 - Kangaroo&#39;s Bolg</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="到底什么是像素值清晰度？"></span>
+            <span id="subtitle" data-typed-text="2月22日：TypeScript索引签名"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-10 22:22" pubdate>
-          2024年2月10日 晚上
+        <time datetime="2024-02-22 17:50" pubdate>
+          2024年2月22日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          986 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          16 分钟
+          9 分钟
         
       </span>
     
@@ -268,69 +268,52 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">到底什么是像素值清晰度？</h1>
+            <h1 id="seo-header">2月22日：TypeScript索引签名</h1>
             
             
               <div class="markdown-body">
                 
-                <p>最近想要生成一个分享海报，需要将背景图和二维码拼接后生成一个新的图片，并通过h5&#x2F;app下载。最初用canvas实现了图片拼接，但是在导出的时候遇到了问题，同样的海报尺寸，为什么h5导出的图片2M,app导出图片的尺寸却有12M？</p>
-<p>为了导出清晰度又高占内存又小的图片，赶紧恶补关于图像的知识，试图弄清楚图片的尺寸、像素值、清晰度和图片容量大小的关系。</p>
+                <p>已知字符串”str”，尝试通过obj[‘str’]获取对象 obj 的 str 属性值，但在 typescript 中语法报错。</p>
 <span id="more"></span>
-<h1 id="遇到的疑问"><a href="#遇到的疑问" class="headerlink" title="遇到的疑问"></a>遇到的疑问</h1><ol>
-<li>为什么在h5和app上绘制的canvas尺寸都是一样的，导出图片的尺寸也一样，大小却是一个2M一个12M？</li>
-<li>为什么1M的图片和12M的图片一样清晰，到底是什么决定了图片的清晰度？</li>
-<li>为什么微信扫码可以识别psd导出的1M海报，却不能识别我通过canvas导出的1M海报，尽管他俩的清晰度看起来完全一样，这两张图片的差别是什么？</li>
+<h1 id="1-需求描述及实现方式"><a href="#1-需求描述及实现方式" class="headerlink" title="1. 需求描述及实现方式"></a>1. 需求描述及实现方式</h1><h2 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h2><p>在管理端配置自助端的首页功能菜单，在自助端显示配置开关开启的菜单。<br>比如，在管理端设置开启 a&#x2F;b&#x2F;c 功能菜单的开关，则在自助端显示 a&#x2F;b&#x2F;c 功能菜单按键，不显示其他内容。</p>
+<h2 id="2-实际实现方式"><a href="#2-实际实现方式" class="headerlink" title="2.实际实现方式"></a>2.实际实现方式</h2><ol>
+<li>涉及两个接口：setConfig 和 getConfig，分别用于保存配置和获取配置，接口的 data 为属性为布尔值的对象，表示是否显示对应的菜单项。</li>
+<li>管理端：加载页面时，使用 getConfig 的内容更新页面 form 的值，进行数据回显。修改数据进行保存时，使用 setConfig 的 post 方法，修改管理端配置。</li>
+<li>自助端：加载首页时，使用 getConfig 获取配置，并使用 filter 方法过滤菜单数组，仅保留对应 showXXX 属性为 true 的值。</li>
 </ol>
-<h1 id="1-基础概念"><a href="#1-基础概念" class="headerlink" title="1. 基础概念"></a>1. 基础概念</h1><h2 id="1-像素"><a href="#1-像素" class="headerlink" title="1. 像素"></a>1. 像素</h2><p>像素分为逻辑像素（数字像素）和物理像素。</p>
-<ol>
-<li>逻辑像素（Digital Pixel）：逻辑像素是在数字图像中使用的概念，我们经常提到的“像素”就指的是逻辑像素。逻辑像素是图像的基本单位，表示图像最小可见元素。可以将像素理解成一个小方块，一张图片由若干小方块（像素点）组成，每个像素点都有自己的颜色和位置信息。</li>
-<li>物理像素（Physical Pixel）：物理像素是实际显示设备的像素单元。我们可以这么理解，物理像素是硬件开发相关的单位，是基于一个一个的硬件小方块，其大小由硬件厂家设定。</li>
-</ol>
-<h2 id="2-分辨率"><a href="#2-分辨率" class="headerlink" title="2. 分辨率"></a>2. 分辨率</h2><p>和像素一样，分辨率也分为逻辑分辨率和物理分辨率。</p>
-<ol>
-<li>逻辑分辨率通常用于描述图像的像素数量，即水平方向和垂直方向上的像素数量。</li>
-<li>物理分辨率：我们常说的屏幕分辨率指的是物理像素的数量，比如说，分辨率为1920*1080的屏幕，指的是屏幕纵向上有1920像素(px)，横向上有1080像素(px)。</li>
-</ol>
-<h2 id="3-清晰度"><a href="#3-清晰度" class="headerlink" title="3. 清晰度"></a>3. 清晰度</h2><p>为什么相同分辨率的图片，清晰度却不同？</p>
-<p>这是因为像素比只是决定清晰度的一个方面，还有其他原因决定了图片的清晰度：</p>
-<ol>
-<li>压缩方式：比如JPEG图片通常采用有损压缩，可能导致图像细节的丢失，而PNG图片使用无损压缩，能够更好地保留图像细节。</li>
-<li>拍摄设备的质量</li>
-<li>后期处理</li>
-<li>拍摄环境</li>
-</ol>
-<h2 id="4-占用容量大小"><a href="#4-占用容量大小" class="headerlink" title="4. 占用容量大小"></a>4. 占用容量大小</h2><p>文件大小描述了图片文件所占据的存储空间大小，通常来说，图片的占用容量大小描述了以下几个方面：</p>
-<ol>
-<li>文件大小：描述了图片文件在计算机或其他设备中所占据的实际大小。较大的文件大小通常表示图片包含更多的像素和颜色信息，或者使用了较低效率的压缩方法。</li>
-<li>清晰度和细节：通常情况下，占用容量较大的图片具有更多的细节和更高的清晰度，占用容量较小的图片可能会出现失真和模糊，因为他们经过了更多的压缩处理。</li>
-<li>压缩质量：较小的文件大小可能意味着采用了更高效的压缩方法，但有可能导致图片质量下降。</li>
-</ol>
-<h1 id="2-计量单位"><a href="#2-计量单位" class="headerlink" title="2. 计量单位"></a>2. 计量单位</h1><h2 id="1-像素比-DPR"><a href="#1-像素比-DPR" class="headerlink" title="1. 像素比(DPR)"></a>1. 像素比(DPR)</h2><p><strong>像素比 &#x3D; 物理像素&#x2F;逻辑像素</strong></p>
-<p>注：这里的物理像素和逻辑像素，指的是像素的个数，即绘制相同尺寸的图像所需要的物理像素&#x2F;逻辑像素的个数。<br>像素比描述了物理像素和逻辑像素的比值，即<strong>用几个物理像素可以绘制一个逻辑像素</strong>。</p>
-<p>在相同设备上，缩放网页比例，实际就是变更了像素比，当像素比越大时，屏幕能够显示的图片范围就越大。比如有一张分辨率为1234*1234的图片，在1920*1080分辨率的电脑上，就只能显示一小部分。而当我们把图片的像素比（DPR）放大时，图片就会缩小，我们也能看到更多的区域。</p>
-<p>注：在uniapp中可以通过如下方式获取设备的像素比，M10 pro的输出结果为2.7</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> dpr = uni.<span class="hljs-title function_">getSystemInfoSync</span>().<span class="hljs-property">pixelRatio</span>; <span class="hljs-comment">// 获取设备像素比</span><br></code></pre></td></tr></table></figure>
+<p>定义了 SelfConfigFields，规定了接口数据的类型：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">SelfConfigFields</span> &#123;<br>  <span class="hljs-attr">showApply</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showApplyRecords</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showRegisterRecords</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showOffline</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showUnbindingDevice</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showUnbinding</span>: <span class="hljs-built_in">boolean</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="2-设备分辨率（DPI）"><a href="#2-设备分辨率（DPI）" class="headerlink" title="2. 设备分辨率（DPI）"></a>2. 设备分辨率（DPI）</h2><p>DPI（Dots Per Inch），设备分辨率指的是各类输出设备每英寸上可产生的点数，dpi越大，屏幕显示越细腻。</p>
-<h2 id="3-图像大小的单位"><a href="#3-图像大小的单位" class="headerlink" title="3. 图像大小的单位"></a>3. 图像大小的单位</h2><ul>
-<li><strong>像素（Pixel）</strong>：像素是图像的最小单元，通常用来表示数字图像的分辨率。例如，一个图像的大小可以表示为宽度 x 高度（像素）。例如，2034 x 4393px。</li>
-<li><strong>字节（Byte）</strong>：字节是计算机中存储数据的基本单位，用来表示图像文件的大小。较小的图像通常以字节为单位，例如几百字节或几千字节（KB）。</li>
-<li><strong>千字节（Kilobyte）</strong>：千字节是存储容量的单位，等于1024字节（2^10字节）。较大的图像文件通常以千字节（KB）为单位来表示其大小。</li>
-<li><strong>兆字节（Megabyte）</strong>：兆字节是存储容量的单位，等于1024千字节（2^20字节）。较大的图像文件或高分辨率图像通常以兆字节（MB）为单位来表示其大小。</li>
-<li><strong>吉字节（Gigabyte）</strong>：吉字节是存储容量的单位，等于1024兆字节（2^30字节）。非常大的图像文件或专业图像素材可能以吉字节（GB）为单位来表示其大小。</li>
-</ul>
-<h1 id="问题回顾与解答"><a href="#问题回顾与解答" class="headerlink" title="问题回顾与解答"></a>问题回顾与解答</h1><ol>
-<li><p>为什么在h5和app上绘制的canvas尺寸都是一样的，导出图片的尺寸也一样，大小却是一个2M一个12M？<br>因为在app上导出canvas时，没有做任何图片的压缩处理，导致占用容量过大。</p>
+<p>定义了functionList用于渲染功能菜单，其中showKey的属性值为字符串，指向配置查询接口中对应的属性名称。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json">functionList = <span class="hljs-punctuation">[</span><br>  <span class="hljs-punctuation">&#123;</span><br>    logUrl<span class="hljs-punctuation">:</span> &#x27;assets/imgs/pc/apply-filing-green.png&#x27;<span class="hljs-punctuation">,</span><br>    name<span class="hljs-punctuation">:</span> &#x27;apply-filing&#x27;<span class="hljs-punctuation">,</span><br>    tip<span class="hljs-punctuation">:</span> &#x27;&#x27;<span class="hljs-punctuation">,</span><br>    index<span class="hljs-punctuation">:</span> &#x27;apply-filing&#x27;<span class="hljs-punctuation">,</span><br>    showKey<span class="hljs-punctuation">:</span> &#x27;showApply&#x27;<br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span>;<br></code></pre></td></tr></table></figure>
+<p>在尝试通过 getSelfConfig 方法过滤 show 为 false 的值时</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 获取自助中心配置</span><br><span class="hljs-comment">  */</span><br> <span class="hljs-title function_">getSelfConfig</span>(<span class="hljs-params"></span>) &#123;<br>   <span class="hljs-variable language_">this</span>.<span class="hljs-property">aggregationProtalService</span>.<span class="hljs-title function_">getSelfConfig</span>().<span class="hljs-title function_">subscribe</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;<br>     <span class="hljs-variable language_">this</span>.<span class="hljs-property">functionList</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">functionList</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> &#123;<br>       <span class="hljs-keyword">return</span> res[item.<span class="hljs-property">showKey</span>]<br>     &#125;)<br>   &#125;)<br> &#125;<br></code></pre></td></tr></table></figure>
+
+<p>在<code>return res[item.showKey]</code>处会出现报错:<br><span style="color:orangered;font-size:14px">元素隐式具有 “any” 类型，因为类型为 “string” 的表达式不能用于索引类型 “SelfConfigFields”。在类型 “SelfConfigFields” 上找不到具有类型为 “string” 的参数的索引签名。</span></p>
+<h1 id="2-知识点解析"><a href="#2-知识点解析" class="headerlink" title="2.知识点解析"></a>2.知识点解析</h1><h2 id="1-ES6-属性名表达式"><a href="#1-ES6-属性名表达式" class="headerlink" title="1. ES6 属性名表达式"></a>1. ES6 属性名表达式</h2><p>JavaScript 定义对象的属性，有两种方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 方法一</span><br>obj.<span class="hljs-property">foo</span> = <span class="hljs-literal">true</span>;<br><span class="hljs-comment">// 方法二</span><br>obj[<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&#x27;bc&#x27;</span>] = <span class="hljs-number">123</span>;<br></code></pre></td></tr></table></figure>
+<p>上面代码的方法一是直接用标识符作为属性名，方法二是用表达式作为属性名，这时要将表达式放在方括号之内。</p>
+<p>但是，如果使用字面量方式定义对象（使用大括号），在 ES5 中只能使用方法一（标识符）定义属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> obj = &#123;<br>  <span class="hljs-attr">foo</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">abc</span>: <span class="hljs-number">123</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>ES6 允许字面量定义对象时，用方法二（表达式）作为对象的属性名，即把表达式放在方括号内。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> propKey = <span class="hljs-string">&#x27;foo&#x27;</span>;<br><span class="hljs-keyword">let</span> obj = &#123;<br>  [propKey]: <span class="hljs-literal">true</span>,<br>  [<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&#x27;bc&#x27;</span>]: <span class="hljs-number">123</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="2-TypeScript索引签名"><a href="#2-TypeScript索引签名" class="headerlink" title="2. TypeScript索引签名"></a>2. TypeScript索引签名</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h3><p>在 TypeScript 中，索引签名是一种定义对象类型的方式，它允许我们使用<strong>字符串或数字</strong>作为索引来访问对象的属性。</p>
+<p>索引签名最主要的作用就是允许我们动态地添加或访问对象的属性，当我们事先不知道类型属性的所有名称及其值的形状时, 索引签名指定当一个对象被一个字符串索引时，它返回一个指定类型的值。</p>
+<h3 id="2-写法"><a href="#2-写法" class="headerlink" title="2. 写法"></a>2. 写法</h3><ol>
+<li><p>字符串索引签名：<code>[index:string]:type</code></p>
 </li>
-<li><p>为什么1M的图片和12M的图片一样清晰，到底是什么决定了图片的清晰度？<br>和1相同，1M的图片采用了压缩算法，能够很好的缩小图片占用的空间大小。在app导出图片时增加压缩方法，实现了在保证图片质量的情况下缩小图片尺寸。</p>
-</li>
-<li><p>为什么微信扫码可以识别psd导出的1M海报，却不能识别我通过canvas导出的1M海报，尽管他俩的清晰度看起来完全一样，这两张图片的差别是什么？<br>微信扫码识别图片时，可能会收到图片格式、压缩算法、色彩深度等因素的影响。最终的解决办法是增大了二维码区域，这样微信就可以正常识别了。</p>
+<li><p>数字索引签名:<code>[index:number]:type</code></p>
 </li>
 </ol>
-<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7190723647030427708?searchId=202402102238257CF36A5131E20B589B24">关于物理像素、逻辑像素（css像素）、分辨率、像素比的超详细讲解</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6918323869824909319?searchId=2024021023301590C1F01125A47F5F2D7C">作为前端，你应该了解的分辨率&#x2F;逻辑像素&#x2F;物理像素&#x2F;retina屏知识🧐</a></li>
-</ul>
+<p>但是需要保证索引签名的类型和实际属性的类型相匹配：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Person</span> &#123;<br>  [<span class="hljs-attr">index</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>;<br>  <span class="hljs-attr">name</span>: <span class="hljs-built_in">number</span>;<br>  <span class="hljs-comment">//会报错，因为索引签名指定，当通过字符串索引时，对应的类型应该是string，但是name的类型为number</span><br>&#125;<br><span class="hljs-comment">//正确的写法：</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Person</span> &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-built_in">number</span>;<br>  <span class="hljs-comment">//以下三种写法都可以</span><br>  [<span class="hljs-attr">index</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span>;<br>  [<span class="hljs-attr">index</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">number</span>;<br>  [<span class="hljs-attr">index</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-索引签名的使用"><a href="#3-索引签名的使用" class="headerlink" title="3. 索引签名的使用"></a>3. 索引签名的使用</h3><p>对照上文的需求，应该在SelfConfigFields中添加<code>[key: string]: boolean;</code>:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">SelfConfigFields</span> &#123;<br>  <span class="hljs-attr">showApply</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showApplyRecords</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showRegisterRecords</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showOffline</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showUnbindingDevice</span>: <span class="hljs-built_in">boolean</span>;<br>  <span class="hljs-attr">showUnbinding</span>: <span class="hljs-built_in">boolean</span>;<br>  [<span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">boolean</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>此时，通过字符串访问对象的属性时，就不会再报错了</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">const</span> showName = item.<span class="hljs-property">showKey</span>; <span class="hljs-comment">//&#x27;showApply&#x27;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res[showName]); <span class="hljs-comment">//res[&#x27;showApply&#x27;]</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -349,7 +332,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E9%A1%B5%E9%9D%A2/" class="category-chain-item">页面</a>
+  <a href="/categories/JavaScript/" class="category-chain-item">JavaScript</a>
   
   
 
@@ -376,8 +359,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>到底什么是像素值清晰度？</div>
-      <div>https://shaonan028.github.io/2024/02/10/到底什么是像素值清晰度？/</div>
+      <div>2月22日：TypeScript索引签名</div>
+      <div>https://shaonan028.github.io/2024/02/22/2月22日：字符串索引签名/</div>
     </div>
     <div class="license-meta">
       
@@ -389,7 +372,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月10日</div>
+          <div>2024年2月22日</div>
         </div>
       
       
@@ -421,18 +404,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/22/2%E6%9C%8822%E6%97%A5%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B4%A2%E5%BC%95%E7%AD%BE%E5%90%8D/" title="2月22日：TypeScript索引签名">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2月22日：TypeScript索引签名</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/02/08/%E6%95%B4%E7%90%86%E4%BB%BB%E5%8A%A1%E5%8D%95/" title="整理任务单">
-                        <span class="hidden-mobile">整理任务单</span>
+                      <a href="/2024/02/10/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%98%AF%E5%83%8F%E7%B4%A0%E5%80%BC%E6%B8%85%E6%99%B0%E5%BA%A6%EF%BC%9F/" title="到底什么是像素值清晰度？">
+                        <span class="hidden-mobile">到底什么是像素值清晰度？</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
