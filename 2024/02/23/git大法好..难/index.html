@@ -16,22 +16,24 @@
   <meta name="author" content="Kangaroo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一直以来，我都有用博客记录学习的想法，但是未能实现。机缘巧合下，看到了一位大佬用Hexo做的个人博客，终于决定尝试一下。所以就从第一篇Hexo的安装和配置开始吧～">
+    <meta name="description" content="说起来使用 Git 已经 7 月有余，虽然不至于再出现合并冲突把别人代码覆盖的的低级错误，但是还是会遇到各种问题，反复学习了若干次 Git，只是熟悉了一些基本的操作，遇到问题时还是解释清楚。但是没关系，多学几遍总会明白的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 安装和配置">
-<meta property="og:url" content="https://shaonan028.github.io/2024/02/07/Hexo%20%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="Git大法好...难">
+<meta property="og:url" content="https://shaonan028.github.io/2024/02/23/git%E5%A4%A7%E6%B3%95%E5%A5%BD..%E9%9A%BE/index.html">
 <meta property="og:site_name" content="Kangaroo&#39;s Bolg">
-<meta property="og:description" content="一直以来，我都有用博客记录学习的想法，但是未能实现。机缘巧合下，看到了一位大佬用Hexo做的个人博客，终于决定尝试一下。所以就从第一篇Hexo的安装和配置开始吧～">
+<meta property="og:description" content="说起来使用 Git 已经 7 月有余，虽然不至于再出现合并冲突把别人代码覆盖的的低级错误，但是还是会遇到各种问题，反复学习了若干次 Git，只是熟悉了一些基本的操作，遇到问题时还是解释清楚。但是没关系，多学几遍总会明白的。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-07T13:38:04.000Z">
-<meta property="article:modified_time" content="2024-02-22T09:51:19.329Z">
+<meta property="og:image" content="https://shaonan028.github.io/img/blog/git-1.1.png">
+<meta property="article:published_time" content="2024-02-23T07:04:05.000Z">
+<meta property="article:modified_time" content="2024-02-26T11:43:38.841Z">
 <meta property="article:author" content="Kangaroo">
-<meta property="article:tag" content="工具">
+<meta property="article:tag" content="基础知识">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://shaonan028.github.io/img/blog/git-1.1.png">
   
   
   
-  <title>Hexo 安装和配置 - Kangaroo&#39;s Bolg</title>
+  <title>Git大法好...难 - Kangaroo&#39;s Bolg</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hexo 安装和配置"></span>
+            <span id="subtitle" data-typed-text="Git大法好...难"></span>
           
         </div>
 
@@ -208,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-07 21:38" pubdate>
-          2024年2月7日 晚上
+        <time datetime="2024-02-23 15:04" pubdate>
+          2024年2月23日 下午
         </time>
       </span>
     
@@ -220,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          797 字
+          1.3k 字
         
       </span>
     
@@ -231,7 +233,7 @@
         
         
         
-          7 分钟
+          11 分钟
         
       </span>
     
@@ -268,69 +270,265 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hexo 安装和配置</h1>
+            <h1 id="seo-header">Git大法好...难</h1>
             
             
               <div class="markdown-body">
                 
-                <p>一直以来，我都有用博客记录学习的想法，但是未能实现。机缘巧合下，看到了一位大佬用Hexo做的个人博客，终于决定尝试一下。所以就从第一篇Hexo的安装和配置开始吧～</p>
+                <p>说起来使用 Git 已经 7 月有余，虽然不至于再出现合并冲突把别人代码覆盖的的低级错误，但是还是会遇到各种问题，反复学习了若干次 Git，只是熟悉了一些基本的操作，遇到问题时还是解释清楚。但是没关系，多学几遍总会明白的。</p>
 <span id="more"></span>
-<h1 id="1-运行环境"><a href="#1-运行环境" class="headerlink" title="1.运行环境"></a>1.运行环境</h1><ul>
-<li>打开zsh，下载python: <code>brew install python3</code></li>
-<li>下载node: <code>brew install node</code></li>
-<li>检查python和node是否安装成功: <code>python -v</code> <code>node -v</code></li>
-<li>npm安装hexo: <code>npm install hexo-cli -g</code><br>经过以上几个步骤，hexo所需的运行环境和基础工具包已经具备</li>
-</ul>
-<h1 id="2-Hexo初始配置"><a href="#2-Hexo初始配置" class="headerlink" title="2.Hexo初始配置"></a>2.Hexo初始配置</h1><ul>
-<li>在本地需要放置博客的位置，创建目录:<code>mkdir blog</code></li>
-<li>进入目录: <code>cd blog</code></li>
-<li>将blog初始化为hexo博客文件夹:<code>hexo init</code></li>
-<li>添加通过git上传本地文章的工具包：<code>npm install hexo-deployer-git --save</code></li>
-<li>删除&#x2F;blog&#x2F;source&#x2F;_post&#x2F;目录下的初始化文章:<code>rm source/_post/Hello-world.md</code></li>
-<li>创建自己的第一篇博客，如:<code>hexo n &quot;Hexo 安装和配置&quot;</code></li>
-<li>生成博客的静态文件:<code>hexo generate</code>(可简写为<code>hexo g</code>)</li>
-<li>运行到本地:<code>hexo server</code>(可简写为<code>hexo s</code>)<br>然后打开 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>就可以看到运行在本地的博客</li>
-</ul>
-<h1 id="3-GitHub-Pages配置"><a href="#3-GitHub-Pages配置" class="headerlink" title="3.GitHub Pages配置"></a>3.GitHub Pages配置</h1><p>GitHub Pages 是 GitHub 提供的一项静态网站托管服务，可以免费将代码仓库转换成一个完全可访问的静态网站。这对前端工程师来说真是太友好了～</p>
-<ul>
-<li>本地安装git和ssh: <code>brew install git ssh</code></li>
-<li>git配置用户名和邮箱地址: <code>git config --global user.name &quot;your_name&quot; --global user.email &quot;your_email&quot;</code></li>
-<li>ssh生成本地公钥pub_key: <code>ssh-keygen -t rsa -C &quot;your_email&quot;</code></li>
-<li>在本地~&#x2F;.ssh目录下可以看到生成的公钥: <code>cat ~/.ssh/id_rsa.pub</code></li>
-<li>复制公钥，打开自己的github，右上角头像 setting -&gt; 左侧导航栏 SSH and GPG keys -&gt; 中间网页content的右上角 New SSH key -&gt; 填写 Title 并粘贴公钥到 key 中 -&gt; 点击Add SSH key完成配置</li>
-<li>在~&#x2F;.ssh目录下创建config文件: <code>touch ~/.ssh/config</code><br>如果已有config文件，则使用 <code>vim ~/.ssh/config</code></li>
-<li>将以下配置写入config中:</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">Host</span> <span class="hljs-string">GitHub.com</span><br>    <span class="hljs-string">Hostname</span> <span class="hljs-string">ssh.github.com</span><br>    <span class="hljs-string">Port</span> <span class="hljs-number">443</span><br></code></pre></td></tr></table></figure>
 
+<h1 id="1-发展历史与原理"><a href="#1-发展历史与原理" class="headerlink" title="1. 发展历史与原理"></a>1. 发展历史与原理</h1><h2 id="1-1-版本控制系统发展历史与分类"><a href="#1-1-版本控制系统发展历史与分类" class="headerlink" title="1.1 版本控制系统发展历史与分类"></a>1.1 版本控制系统发展历史与分类</h2><ol>
+<li><strong>本地版本控制系统</strong>（在本地电脑上采用简单数据库控制版本变更）</li>
+<li><strong>集中化的版本控制系统</strong>（使用单一的集中管理的服务器，存储所有的文件修订版本。但是当中央服务器出现单点故障时，将对所有开发工作造成影响。）</li>
+<li><strong>分布式版本控制系统</strong>（比如 Git，Mercurial 以及 Darcs 等，每一个电脑上都存储了整个代码仓库的完备记录，任何一处协同工作的服务器出现故障时，都可以从其他镜像的本地仓库进行复原。</li>
+</ol>
+<h2 id="1-2-原理"><a href="#1-2-原理" class="headerlink" title="1.2 原理"></a>1.2 原理</h2><p>Git 与其他分支控制系统最大的差异是对待数据的形式，它直接记录了文件快照，而非记录文件的变更量。从概念上来说，其它大部分系统以文件变更列表的方式存储信息，这类系统（CVS、Subversion、Perforce 等等） 将它们存储的信息看作是一组基本文件和每个文件随时间逐步累积的差异 （它们通常称作 <strong>基于差异（delta-based</strong> 的版本控制）。</p>
+<p>在 Git 中，更像是把数据看作小型文件系统的一系列快照。当文件发生变更时，就会对当前的所有文件创建一个快照，并且记录指向这个快照的索引。为了提高效率，当文件没有发生变更时，git 就不会再保存文件，而是记录一个链接指向之前的存储的文件。</p>
 <ul>
-<li>本地机器与github建立连接：<code>ssh -T git@github.com</code> 出现下列信息代表连接github成功：</li>
+<li>这个<strong>链接</strong>是什么？</li>
 </ul>
-<p><code>Hi &#123;YourName&#125;! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code></p>
-<ul>
-<li>在Github创建自己的仓库: <code>&#123;username&#125;/&#123;username&#125;.github.io</code> 注意仓库的名称一定是github的username加上.github.io</li>
-<li>在仓库Setting的左侧导航栏找到Pages，自行设置分支（github默认分支名main，可以根据实际情况更改成master）</li>
-<li>在本地blog目录下上传自己的博客到github中: <code>hexo d</code>,等待上传即可<ul>
-<li>注：我在这里遇到了问题，理论上来说建立ssh链接后就无需输入帐密。但是此处需要输入username和password才允许上传，并且这里的password是github的token,可以在<a target="_blank" rel="noopener" href="https://github.com/settings/tokens">https://github.com/settings/tokens</a>中生成</li>
-</ul>
-</li>
-</ul>
-<p>完成上述步骤后，刷新github页面，可以在setting中的GitHub Pages中可看到visit site 按钮，点击跳转可以看到部署在github上的博客</p>
-<h1 id="4-主题配置"><a href="#4-主题配置" class="headerlink" title="4.主题配置"></a>4.主题配置</h1><p>该博客使用的主题为Fuild</p>
-<ul>
-<li><p>主题地址:<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">https://github.com/fluid-dev/hexo-theme-fluid</a></p>
-</li>
-<li><p>用户手册:<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">https://hexo.fluid-dev.com/docs/</a></p>
-</li>
-<li><p>安装fluid主题 <code>npm install --save hexo-theme-fluid</code></p>
-</li>
-<li><p>在blog目录下创建<code>_config.fluid.yml</code>,<code>touch _config.fluid.yml</code>,将主题的 <a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml">_config.yml</a>内容复制过去。</p>
-</li>
-</ul>
-<h1 id="5-注意事项"><a href="#5-注意事项" class="headerlink" title="5.注意事项"></a>5.注意事项</h1><ul>
-<li>每次<code>hexo g</code>之前都<code>hexo clean</code>一下</li>
-<li>使用<code>hexo deploy</code>部署到github上</li>
-<li>hexo文档 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></li>
+<p>在 git 保存所有文件变更之前，都会计算<span style="color:green">校验和</span>。在 git 中计算校验和的机制叫做<span style="color:green">SHA-1 散列（hash，哈希）</span>。这是一个由 40 个十六进制自负(0-9 和 a-f)组成的字符串，基于 Git 中文件的内容和目录结构计算出来。SHA-1 哈希看起来是这样：<code>24b9da6552252987aa493b52f8696cd6d3b00373</code><br>在 Git 中，都是用这个校验和（哈希值，即上文提到的链接）作为文件的引用，而不是文件名。</p>
+<h2 id="1-3-Git-仓库"><a href="#1-3-Git-仓库" class="headerlink" title="1.3 Git 仓库"></a>1.3 Git 仓库</h2><p>Git 分成几个重要的部分，工作区，暂存区，本地仓库，远端仓库。<br><img src="/img/blog/git-1.1.png" srcset="/img/loading.gif" lazyload alt="git基本操作" title="git基本操作"></p>
+<ol>
+<li><span style="color:orange">本地到远端的操作</span></li>
+<li><span style="color:purple">远端到本地的操作</span></li>
+</ol>
+<h1 id="2-Git-常用操作"><a href="#2-Git-常用操作" class="headerlink" title="2. Git 常用操作"></a>2. Git 常用操作</h1><p><span style="color:orange">最最最最最最常用的操作</span></p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>作用</th>
+<th>使用范例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add</td>
+<td>将文件添加到暂存区</td>
+<td></td>
+</tr>
+<tr>
+<td>commit</td>
+<td>将暂存区的文件提交到本地仓库</td>
+<td></td>
+</tr>
+<tr>
+<td>push</td>
+<td>将本地仓库的文件推送到远端仓库</td>
+<td></td>
+</tr>
+<tr>
+<td>pull</td>
+<td>拉取远端仓库的文件内容并更新本地分支</td>
+<td></td>
+</tr>
+<tr>
+<td>fetch</td>
+<td>拉取远端仓库的文件</td>
+<td></td>
+</tr>
+<tr>
+<td>merge</td>
+<td>合并远端分支到本地分支</td>
+<td></td>
+</tr>
+<tr>
+<td>stash</td>
+<td>将文件添加到暂存区</td>
+<td></td>
+</tr>
+<tr>
+<td>revert</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>安装和配置</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>作用</th>
+<th>使用范例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>init</td>
+<td>初始化仓库</td>
+<td></td>
+</tr>
+<tr>
+<td>clone</td>
+<td>克隆仓库</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>获取和创建项目</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>作用</th>
+<th>使用范例</th>
+</tr>
+</thead>
+</table>
+<p>基础快照</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>作用</th>
+<th>使用范例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>status</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>diff</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>commit</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>notes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>restore</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>reset</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>rm</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mv</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>分支和合并</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>作用</th>
+<th>使用范例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>branch</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>checkout</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>switch</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>merge</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mergetool</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>log</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>stash</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tag</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>worktree</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>分享和更新项目</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>作用</th>
+<th>使用范例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fetch</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pull</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>push</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>remot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>submodule</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>检查和比较</p>
+<p>修补</p>
+<p>调试</p>
+<p>管理</p>
+<h1 id="开发问题"><a href="#开发问题" class="headerlink" title="开发问题"></a>开发问题</h1><h2 id="1-代码相同，为什么还是检测出了变更"><a href="#1-代码相同，为什么还是检测出了变更" class="headerlink" title="1. 代码相同，为什么还是检测出了变更"></a>1. 代码相同，为什么还是检测出了变更</h2><p><strong>有远端分支 a 和本地分支 b，通过 git push origin b 将本地分支 b 推送至远端，然后发起合并请求，将远端分支 b 合并进 a，但是在对比变更的时候发现，有些在 a 上的代码和 b 上相同，但是还是提示有变更。</strong></p>
+<p>解析：</p>
+<p>当你将远程分支 B 合并到远程分支 A 时，即使在两个分支上存在相同的代码，也可能会出现提示有变更的情况。这通常是因为 git 在判断是否有变更时，是通过比较提交历史和具体文件内容来确定的。<br>即使两个分支上的某些文件内容相同，在提交历史中它们可能是不同的。这可能是因为这些相同的文件在两个分支上的修改历史并不一样，导致 git 认为它们是不同的版本，从而在合并请求中显示有变更。<br>另外，即使文件内容没有改变，如果文件的元数据（如文件权限或时间戳）发生了变化，git 也会认为这是一个变更。<br>如果你确定两个分支上的代码实际上是相同的，且不希望在合并请求中显示这些“变更”，你可以考虑使用 git rebase 或者 git merge –squash 来合并分支，以减少重复的提交历史记录和变更。这样可以避免在合并请求中出现不必要的变更提示。</p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2">Git官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903702374023182">对比 Git 与 SVN，这篇讲的很易懂</a></li>
 </ul>
 
                 
@@ -350,7 +548,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%B5%81%E7%A8%8B/" class="category-chain-item">流程</a>
+  <a href="/categories/%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">工程化</a>
   
   
 
@@ -365,7 +563,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%B7%A5%E5%85%B7/" class="print-no-link">#工具</a>
+        <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="print-no-link">#基础知识</a>
       
     </div>
   
@@ -377,8 +575,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hexo 安装和配置</div>
-      <div>https://shaonan028.github.io/2024/02/07/Hexo 安装和配置/</div>
+      <div>Git大法好...难</div>
+      <div>https://shaonan028.github.io/2024/02/23/git大法好..难/</div>
     </div>
     <div class="license-meta">
       
@@ -390,7 +588,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月7日</div>
+          <div>2024年2月23日</div>
         </div>
       
       
@@ -422,15 +620,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/10/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%98%AF%E5%83%8F%E7%B4%A0%E5%80%BC%E6%B8%85%E6%99%B0%E5%BA%A6%EF%BC%9F/" title="到底什么是像素值清晰度？">
+                      <a href="/2024/02/27/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%98%AF%E5%A6%82%E4%BD%95%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%91%88%E7%8E%B0%E5%88%B0%E7%BD%91%E9%A1%B5%E7%9A%84%EF%BC%9F/" title="前端项目是如何从本地文件展示到网页的？（前端学习路径概览）">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">到底什么是像素值清晰度？</span>
+                        <span class="hidden-mobile">前端项目是如何从本地文件展示到网页的？（前端学习路径概览）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/02/22/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B4%A2%E5%BC%95%E7%AD%BE%E5%90%8D/" title="TypeScript索引签名">
+                        <span class="hidden-mobile">TypeScript索引签名</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

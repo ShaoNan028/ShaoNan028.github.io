@@ -1,0 +1,817 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/dog.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Kangaroo">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="遥想最开始接触前端的时候，是从html开始，一步步走到css然后是javascript，知识学了一箩筐，但是用的时候却完全不会应用，就像是手里拿着积木的小孩，根本不懂要搭出一个怎样的房子。 后来才意识到，要看清楚道路，才能知道前方的路往哪里走，才能知道哪些路是必经之路。所以希望能够通过一种通俗易懂的方式，能够讲清楚前端的整体结构，也让我自己对前端相关知识的各部分作用，有一个大致的认识和了解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端项目是如何从本地文件展示到网页的？（前端学习路径概览）">
+<meta property="og:url" content="https://shaonan028.github.io/2024/02/27/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%98%AF%E5%A6%82%E4%BD%95%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%91%88%E7%8E%B0%E5%88%B0%E7%BD%91%E9%A1%B5%E7%9A%84%EF%BC%9F/index.html">
+<meta property="og:site_name" content="Kangaroo&#39;s Bolg">
+<meta property="og:description" content="遥想最开始接触前端的时候，是从html开始，一步步走到css然后是javascript，知识学了一箩筐，但是用的时候却完全不会应用，就像是手里拿着积木的小孩，根本不懂要搭出一个怎样的房子。 后来才意识到，要看清楚道路，才能知道前方的路往哪里走，才能知道哪些路是必经之路。所以希望能够通过一种通俗易懂的方式，能够讲清楚前端的整体结构，也让我自己对前端相关知识的各部分作用，有一个大致的认识和了解。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-02-27T11:16:06.000Z">
+<meta property="article:modified_time" content="2024-02-28T16:41:48.837Z">
+<meta property="article:author" content="Kangaroo">
+<meta property="article:tag" content="基础知识">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>前端项目是如何从本地文件展示到网页的？（前端学习路径概览） - Kangaroo&#39;s Bolg</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"shaonan028.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>袋鼠的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="前端项目是如何从本地文件展示到网页的？（前端学习路径概览）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-27 19:16" pubdate>
+          2024年2月27日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          26 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">前端项目是如何从本地文件展示到网页的？（前端学习路径概览）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>遥想最开始接触前端的时候，是从html开始，一步步走到css然后是javascript，知识学了一箩筐，但是用的时候却完全不会应用，就像是手里拿着积木的小孩，根本不懂要搭出一个怎样的房子。</p>
+<p>后来才意识到，要看清楚道路，才能知道前方的路往哪里走，才能知道哪些路是必经之路。所以希望能够通过一种通俗易懂的方式，能够讲清楚前端的整体结构，也让我自己对前端相关知识的各部分作用，有一个大致的认识和了解。</p>
+<span id="more"></span>
+<h1 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h1><h2 id="1-什么是前端？"><a href="#1-什么是前端？" class="headerlink" title="1. 什么是前端？"></a>1. 什么是前端？</h2><p>以你现在看到的博客为例，所有你能看的见的内容：页面结构、交互效果、展示内容，都归属于前端的范畴，它包含了web网页中所有和用户进行交互的内容。</p>
+<h3 id="前端开发方向"><a href="#前端开发方向" class="headerlink" title="前端开发方向"></a>前端开发方向</h3><p><strong>pc端</strong></p>
+<ul>
+<li>pc端前端开发主要针对电脑浏览器的网页应用程序开发，需要考虑的是不同浏览器(Chrome,Firefox,Safari,Edge)之间的兼容性，保证在所有浏览器上都能正常展示和运行。</li>
+<li>pc端会更注重页面布局宽度、交互方式、功能丰富性等，因为桌面设备有更大的屏幕空间和更强大的性能，可以支持更复杂的页面和交互设计。</li>
+</ul>
+<p><strong>移动端</strong></p>
+<ul>
+<li>移动端前端开发则针对移动设备（手机和平板）的网页应用程序（(h5)开发，由于移动设备的尺寸、分辨率种类繁多，在开发移动端网页时，需要考虑更多响应式、适配性、性能优化，确保网页能够在不同尺寸和方向的移动设备上自适应地展示，并提供流畅的触控交互。</li>
+<li>app开发：目前已经有混合式或跨平台的开发方式(Reactive Native,Ionic)，使得前端也能够使用熟悉的技术来实现移动应用的开发。</li>
+</ul>
+<h2 id="2-本文概述"><a href="#2-本文概述" class="headerlink" title="2. 本文概述"></a>2. 本文概述</h2><p>在开发过程中，我遇到的最大的两个问题，<span style="background:#87CEFA">第一，不知道学什么，第二，学了不知道在哪里可以用</span>。</p>
+<p>大大小小的知识图谱看了不少，前端学习路径也没少翻，但是还是不能完全回答上面的两个问题。所以，我想从案例出发是最好的，假设我现在想要在pc端实现一个记录每日复盘的网站，我需要学习哪些知识才能实现我的目标。</p>
+<p>本文将通过<span style="background:#87CEFA"><strong>基础知识</strong></span>和<span style="background:#87CEFA"><strong>项目开发</strong></span>相对应的方式，介绍前端开发过程中需要学习的内容，以及这些知识的作用。但是作为一篇科普文（并不），不应该在细节上过多赘述，更多知识还需要在学习过程中加以深入。</p>
+<p>（搓手手）第一次写这种文章，还有点激动嘞，希望能够不断完善。</p>
+<h1 id="2-从单一页面开始"><a href="#2-从单一页面开始" class="headerlink" title="2. 从单一页面开始"></a>2. 从单一页面开始</h1><p>现在我希望实现一个简单的首页，能够显示网页的标题：<strong>每日复盘</strong>，并能够展示过去一周的复盘记录。</p>
+<h2 id="2-1-基础知识"><a href="#2-1-基础知识" class="headerlink" title="2.1 基础知识"></a>2.1 基础知识</h2><p>这需要涉及前端最基础的三个内容：HTML、CSS、JavaScript。<br>其中，HTML描述了一个页面的内容和框架，CSS层叠样式表描述了页面展示的样式&#x2F;动画效果，JavaScript则用于为页面增加交互等行为逻辑。</p>
+<p>打个比方，把网页想象为一个动画人物，那么使用HTML实现的就是他的骨架，通过HTML的标签语法可以给这个人设置基本的高矮胖瘦；但是如果想要给他穿上好看的衣服、增加一些特效，则需要使用CSS实现；通过前两步得到的还只是简单的静态人物，想要实现人物的表情和动作变化，则需要使用JavaScript实现。</p>
+<h2 id="2-2-发起网络请求及相关理论"><a href="#2-2-发起网络请求及相关理论" class="headerlink" title="2.2 发起网络请求及相关理论"></a>2.2 发起网络请求及相关理论</h2><p>学完HTML和CSS，相信你已经可以制作出一个美观的复盘首页了，你将会面临这样的问题：</p>
+<ul>
+<li>现在的页面数据都是固定的，如何能够获取到过去一周的复盘记录，并展示到页面上呢？</li>
+</ul>
+<p>关于这个问题，需要学习关于<strong>《计算机网络》</strong> ，熟悉计算机网络的网络请求方式&#x2F;请求结构等知识点，通过向后端发起网络请求来获取到所需数据；如果你还需要对获取到的后端数据进行处理，比如进行排序&#x2F;过滤等操作，也许会涉及 <strong>《数据结构》</strong> ;如果你想对你发起的网络请求进行加密，保证你的网站在一个安全的状态运行，也许需要学习 <strong>《网络安全》</strong>。</p>
+<p>具体的发起网络请求的实现方式，可以选择使用JavaScript的对象XMLHttpRequest，也可以选择引入第三方axios库。这也对应了两种解决问题的思路：<span style="background:#87CEFA">1.自己用原生js实现；2.用别人造的轮子(第三方库&#x2F;包&#x2F;框架)。</span></p>
+<p>聪明机智的我们当然要选择用别人的轮子，在html文件中引入第三方库：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 直接从网站引入axios库 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 将axios库下载至本地项目，并通过相对路径引用 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/path/to/axios/axios.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这样就能在html文件中使用axios库提供的请求方法，结合javascript的DOM操作方法，在页面上展示历史复盘记录了。但是，新的问题又出现了:</p>
+<ul>
+<li>使用原生javascript修改页面内容,操作复杂且不灵活</li>
+<li>在一个html文件实现一个页面的结构中，如果想在每个页面实现相同的页面结构（比如导航栏），就需要在每个页面中都写一遍，这显然不合理，有没有更好的方法？</li>
+<li>如何能够按照功能模块对项目进行管理？</li>
+<li>当前端项目越来越复杂，需要引入的库越来越多时，如何对所有引入的库进行管理和更新，要如何判断引用的依赖关系？</li>
+</ul>
+<p>这些正是前端项目需要考虑的问题，让我们把视野从单一页面拓展到完整的前端项目，正式进入本文要探讨的内容：<strong>前端项目是如何从本地文件展示到网页的？</strong></p>
+<hr>
+<p><strong>本章知识学习表：</strong></p>
+<table>
+<thead>
+<tr>
+<th>基础知识</th>
+<th>进阶学习</th>
+<th>相关理论基础</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTML</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CSS</td>
+<td>SCSS、LESS</td>
+<td></td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td>TypeScript</td>
+<td>数据结构，计算机网络，操作系统，网络安全</td>
+</tr>
+</tbody></table>
+<h1 id="3-搭建前端项目"><a href="#3-搭建前端项目" class="headerlink" title="3. 搭建前端项目"></a>3. 搭建前端项目</h1><p>通过学习基础知识，我们已经能够实现单一的前端页面。但是在实际的项目开发中，不仅仅是把若干html组合在一起那么简单，随着页面数量的增加，我们将面临着逻辑复用、项目层级结构管理、第三方库的管理和升级等问题。</p>
+<p>幸运的是，前端的框架和各类库&#x2F;包已经提供了诸多解决方案，学习如何使用这些框架&#x2F;库，也是前端进阶的一部分。在此基础上，还需要深入学习<span style="color:#57a7d9">组件化、模块化、工程化</span>的知识，以更好的提高开发效率、降低维护成本。</p>
+<h2 id="3-1-使用框架之前"><a href="#3-1-使用框架之前" class="headerlink" title="3.1 使用框架之前"></a>3.1 使用框架之前</h2><p>当你尝试使用一个框架搭建前端项目时，官方网站会告诉你，必须先安装node.js和npm（Node Package Manager）。</p>
+<h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><ul>
+<li><p><strong>什么是Node.js？</strong></p>
+<blockquote>
+<p>Node.js是一个基于Chrome V8引擎的JavaScript运行时环境，支持在服务器端运行JavaScript代码，这使得前端开发人员可以在本地运行JavaScript代码，调试和测试前端应用程序。</p>
+</blockquote>
+<!-- [带你入坑Nodejs（一）](https://juejin.cn/post/6994255090219483172?searchId=202402281723092EAA9B8D9B37FE6EE9A6)
+[带你入坑Nodejs（二）](https://juejin.cn/post/6994980351298764808) -->
+<p>  顺便一提，如果想从前端转全栈，nodejs是一个不错的入手点。</p>
+<blockquote>
+<p>什么是运行时环境？<br>运行时环境（Runtime Environment）是指程序在运行时所需的支持环境和资源，用于执行和管理程序代码。运行时环境提供了一系列必要的功能和服务，使得程序能够在特定的平台或环境中正常运行。<br>  在软件开发中，不同的编程语言和框架通常需要特定的运行时环境来解释和执行代码。例如，JavaScript需要浏览器环境或Node.js环境来执行，Java需要Java虚拟机（JVM），Python需要Python解释器等。</p>
+</blockquote>
+</li>
+</ul>
+<!-- 运行时环境通常包括以下内容：
+解释器或编译器：用于将源代码转换为可执行代码的工具，如JavaScript的V8引擎、Java的JVM、Python的解释器等。
+库和依赖项：程序执行时所需的各种库、框架和依赖项，以支持程序功能的实现。
+内存管理：用于分配和释放内存资源，确保程序正常运行并避免内存泄漏。
+输入/输出处理：处理程序与外部环境之间的输入和输出操作，如文件操作、网络通信等。
+错误处理和异常处理：捕获和处理程序中可能出现的错误和异常，确保程序稳定性和可靠性。 -->
+
+<h3 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h3><ul>
+<li><p>什么是npm？<br>上文提到了轮子，你可以把npm理解为轮子管理器，通过npm，可以安装别人的轮子使用，也可以自己发布轮子到互联网上给别人使用，此外，你也能够很好的管理在项目中你所拥有和需要的轮子。</p>
+<blockquote>
+<p>npm（Node Package Manager）是 Node.js 的包管理器，用于安装、管理和发布 JavaScript 包。<br><a target="_blank" rel="noopener" href="https://docs.npmjs.com/">npm官方文档</a></p>
+</blockquote>
+</li>
+<li><p>什么是yarn和pnpm？</p>
+<blockquote>
+<p>他们都是javascript包管理工具，只不过基于npm做了一些改进和变更，并且在应用时有细微的差异，更多内容可以查看官方文档。<br><a target="_blank" rel="noopener" href="https://yarn.nodejs.cn/en/docs/install">yarn官方文档</a><br><a target="_blank" rel="noopener" href="https://www.pnpm.cn/motivation">pnpm官方文档</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-2-框架的种类及项目结构"><a href="#3-2-框架的种类及项目结构" class="headerlink" title="3.2 框架的种类及项目结构"></a>3.2 框架的种类及项目结构</h2><p>目前主流的三类前端框架：React、Vue、Angular。<br>虽然几类框架的实现方法不同，但是他们无一例外的都涉及到路由管理、组件传参、状态管理等知识点，为我们提供了很多封装好的功能，所以本质上框架只是工具和实现目标的途径，掌握最关键的通用逻辑才是最重要的。</p>
+<blockquote>
+<p>关于框架的底层架构原理，你可能会接触到MVP、MVC和MVVM，Vue采用了MVVM架构，Angular采用了MVC架构，而React采用了虚拟DOM的方式实现了数据驱动视图的效果。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903825225023502?searchId=2024022816050469F71170640EAD6BE7F3">前端面试题：这是我理解的MVVM，请注意查收</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903605414133773?searchId=2024022816050469F71170640EAD6BE7F3">MVVM的实现</a><br>TODO:写一篇关于框架底层实现原理的文章</p>
+</blockquote>
+<!-- >在 Angular 中，视图的动态更新是通过数据绑定和变更检测机制来实现的。Angular 提供了一种称为 "脏检查" 的机制，用于检测数据模型的变化并更新视图。
+具体来说，Angular 实现视图动态更新的主要方式包括以下几个方面：
+数据绑定：Angular 提供了多种数据绑定方式，包括插值表达式（Interpolation）、属性绑定（Property Binding）、事件绑定（Event Binding）等。通过数据绑定，可以将模型中的数据与视图元素进行关联，当模型数据发生变化时，视图会自动更新以反映最新的数据状态。
+双向数据绑定：Angular 还提供了双向数据绑定机制，通过 ngModel 指令或 [(ngModel)] 语法，可以实现表单元素与模型数据之间的双向绑定。当用户在表单输入框中输入内容时，模型数据会自动更新，反之亦然。
+变更检测：Angular 的变更检测机制会监测模型数据的变化，并在必要时更新视图。Angular 使用 Zone.js 来截取异步操作，当数据发生变化时，Angular 将标记组件为 "脏"，并触发变更检测流程，更新相关视图。
+OnPush 策略：除了默认的变更检测机制外，Angular 还提供了 OnPush 变更检测策略，可以通过 @Component 装饰器的 changeDetection 属性设置为 ChangeDetectionStrategy.OnPush 来启用。使用 OnPush 策略可以提高性能，因为它只会在输入属性发生变化或手动触发变更检测时才执行变更检测。
+总的来说，Angular 通过数据绑定和变更检测机制实现视图的动态更新，确保视图与模型数据的同步，并提供了灵活的机制来优化性能和响应性。这些机制使开发者能够方便地构建复杂的前端应用，并实现良好的用户体验。 -->
+
+<h3 id="框架的选择"><a href="#框架的选择" class="headerlink" title="框架的选择"></a>框架的选择</h3><h3 id="前端项目结构"><a href="#前端项目结构" class="headerlink" title="前端项目结构"></a>前端项目结构</h3><ul>
+<li><strong><code>/src</code>：</strong> 存放项目的源代码<ul>
+<li><strong><code>/components</code>：</strong> 存放可复用的组件</li>
+<li><strong><code>/pages</code>：</strong> 存放页面级组件</li>
+<li><strong><code>/assets</code>：</strong> 存放静态资源文件，如图片、字体等</li>
+<li><strong><code>/styles</code>：</strong> 存放样式文件，如 CSS、Sass 等</li>
+<li><strong><code>/utils</code>：</strong> 存放通用工具函数</li>
+</ul>
+</li>
+<li><strong><code>/public</code>：</strong> 存放不需要经过构建处理的静态文件</li>
+<li><strong><code>/build</code>：</strong> 存放构建后的代码</li>
+<li><strong><code>/node_modules</code>：</strong> 存放项目依赖的第三方包</li>
+<li><strong><code>package.json</code>：</strong> 项目的配置文件，包含依赖信息、脚本命令等</li>
+</ul>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><code class="hljs axapta">my-vue-test:.<br>│  .browserslistrc<br>│  .env.production<br>│  .eslintrc.js<br>│  .gitignore<br>│  babel.config.js<br>│  package-lock.json<br>│  package.json<br>│  README.md<br>│  vue.config.js<br>│  yarn-error.log<br>│  yarn.lock<br>│<br>├─<span class="hljs-keyword">public</span><br>│      favicon.ico<br>│      <span class="hljs-keyword">index</span>.html<br>│<br>└─src<br>    ├─apis <span class="hljs-comment">//接口文件根据页面或实例模块化</span><br>    │      <span class="hljs-keyword">index</span>.js<br>    │      login.js<br>    │<br>    ├─components <span class="hljs-comment">//工具组件</span><br>    │  └─header<br>    │          <span class="hljs-keyword">index</span>.less<br>    │          <span class="hljs-keyword">index</span>.vue<br>    │<br>    ├─config <span class="hljs-comment">//配置（环境变量配置不同passid等）</span><br>    │      env.js<br>    │      <span class="hljs-keyword">index</span>.js<br>    │<br>    ├─contant <span class="hljs-comment">//常量</span><br>    │      <span class="hljs-keyword">index</span>.js<br>    │<br>    ├─images <span class="hljs-comment">//图片</span><br>    │      logo.png<br>    │<br>    ├─pages <span class="hljs-comment">//多页面vue项目，不同的实例</span><br>    │  ├─<span class="hljs-keyword">index</span> <span class="hljs-comment">//主实例</span><br>    │  │  │  <span class="hljs-keyword">index</span>.js<br>    │  │  │  <span class="hljs-keyword">index</span>.vue<br>    │  │  │  main.js<br>    │  │  │  router.js<br>    │  │  │  store.js<br>    │  │  │<br>    │  │  ├─components <span class="hljs-comment">//业务组件</span><br>    │  │  └─pages <span class="hljs-comment">//此实例中的各个路由</span><br>    │  │      ├─amenu<br>    │  │      │      <span class="hljs-keyword">index</span>.vue<br>    │  │      │<br>    │  │      └─bmenu<br>    │  │              <span class="hljs-keyword">index</span>.vue<br>    │  │<br>    │  └─login <span class="hljs-comment">//另一个实例</span><br>    │          <span class="hljs-keyword">index</span>.js<br>    │          <span class="hljs-keyword">index</span>.vue<br>    │          main.js<br>    │<br>    ├─scripts <span class="hljs-comment">//包含各种常用配置，工具函数</span><br>    │  │  map.js<br>    │  │<br>    │  └─utils<br>    │          helper.js<br>    │<br>    ├─store <span class="hljs-comment">//vuex仓库</span><br>    │  │  <span class="hljs-keyword">index</span>.js<br>    │  │<br>    │  ├─<span class="hljs-keyword">index</span><br>    │  │      actions.js<br>    │  │      getters.js<br>    │  │      <span class="hljs-keyword">index</span>.js<br>    │  │      mutation-types.js<br>    │  │      mutations.js<br>    │  │      state.js<br>    │  │<br>    │  └─user<br>    │          actions.js<br>    │          getters.js<br>    │          <span class="hljs-keyword">index</span>.js<br>    │          mutation-types.js<br>    │          mutations.js<br>    │          state.js<br>    │<br>    └─styles <span class="hljs-comment">//样式统一配置</span><br>        │  components.less<br>        │<br>        ├─animation<br>        │      <span class="hljs-keyword">index</span>.less<br>        │      slide.less<br>        │<br>        ├─base<br>        │      <span class="hljs-keyword">index</span>.less<br>        │      style.less<br>        │      <span class="hljs-built_in">var</span>.less<br>        │      widget.less<br>        │<br>        └─<span class="hljs-keyword">common</span><br>                <span class="hljs-keyword">index</span>.less<br>                reset.less<br>                style.less<br>                transition.less<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="4-前端工程化"><a href="#4-前端工程化" class="headerlink" title="4. 前端工程化"></a>4. 前端工程化</h1><p>在开发过程中我遇到过这些问题：</p>
+<ol>
+<li>相同逻辑写很多遍，修改起来非常困难</li>
+<li></li>
+</ol>
+<p><em><strong>在这里也想提一个我的观点：不考虑html和css，前端所有的代码本质上都是js文件。比如我们后续会提到的组件化、模块化，就是把一套可复用的逻辑装进一个盒子，这个盒子可以是组件，也可以是模块，再通过一些特定的方法，让别人也可以用到这些盒子里的内容。</strong></em></p>
+<h2 id="3-1-版本控制系统Git"><a href="#3-1-版本控制系统Git" class="headerlink" title="3.1 版本控制系统Git"></a>3.1 版本控制系统Git</h2><!-- 
+可参考的行文结构：
+1. 引言
+在引言部分，介绍前端开发的重要性和前端项目在现代互联网应用中的角色。简要介绍本文将讨论的内容，以及为什么了解前端项目的完整流程对于前端开发者和团队至关重要。
+
+2. 前端项目概览
+这一部分可以介绍前端项目的概念，包括前端项目的组成部分、前端开发的基本工作流程、常用的技术栈和工具等。可以简要介绍前端项目的开发、部署和持续集成等方面。
+
+3. 从页面呈现到网页
+3.1 页面布局与设计
+介绍页面布局的重要性和基本原则
+讨论响应式设计和移动优先策略
+3.2 前端开发流程
+讨论前端开发的基本流程，包括需求分析、设计、编码、测试等阶段
+引入前端开发中常用的技术和工具，如 HTML、CSS、JavaScript、前端框架等
+3.3 页面交互与用户体验
+探讨页面交互设计和用户体验优化的重要性
+介绍常见的前端交互设计技巧和最佳实践
+4. 前端项目的开发
+4.1 项目架构与组织
+讨论前端项目的架构设计原则和常见的项目组织结构
+介绍如何建立可维护、可扩展的前端项目
+4.2 开发工具与环境
+探讨前端开发中常用的开发工具和集成环境
+介绍代码编辑器、版本控制工具、包管理器等工具的使用
+5. 前端项目的部署与持续集成
+5.1 项目部署流程
+介绍前端项目部署的基本流程和方法
+讨论静态资源的优化和压缩，以提升网页加载性能
+5.2 持续集成与自动化部署
+探讨持续集成的概念和重要性
+介绍如何利用持续集成工具实现自动化测试、构建和部署
+6. 总结
+总结全文内容，强调前端项目开发的重要性和复杂性。回顾从页面呈现到网页的完整流程，并鼓励读者进一步深入学习和实践前端项目开发。
+
+7. 参考资料
+列出本文中涉及的相关参考资料、工具和资源，供读者深入学习和了解更多有关前端项目开发的内容。
+
+通过以上结构，你可以清晰地呈现前端项目从页面呈现到网页的完整流程，同时帮助读者理解前端开发的基础知识结构和相关技术。希望这个建议对你有所帮助！如果有其他问题，请随时提出。
+ -->
+
+
+<p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1022910821149312/1108898947791072">廖雪峰-MVVM</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%88/" class="category-chain-item">知识总览</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="print-no-link">#基础知识</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>前端项目是如何从本地文件展示到网页的？（前端学习路径概览）</div>
+      <div>https://shaonan028.github.io/2024/02/27/前端项目是如何从页面呈现到网页的？/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Kangaroo</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月27日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/02/23/git%E5%A4%A7%E6%B3%95%E5%A5%BD..%E9%9A%BE/" title="Git大法好...难">
+                        <span class="hidden-mobile">Git大法好...难</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
