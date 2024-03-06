@@ -1,0 +1,980 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/dog.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Kangaroo">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="通过前端知识体系概览（一）的学习，也许你已经可以搭建一个比较完整的前端项目，但是对项目结构、模块化、工程化等概念还是不甚清晰，本章将一一讲解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识体系概览（二）—— 模块化和工程化">
+<meta property="og:url" content="https://shaonan028.github.io/2024/03/05/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E6%A6%82%E8%A7%88%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94-%E6%A8%A1%E5%9D%97%E5%8C%96%E5%92%8C%E5%B7%A5%E7%A8%8B%E5%8C%96/index.html">
+<meta property="og:site_name" content="Kangaroo&#39;s Bolg">
+<meta property="og:description" content="通过前端知识体系概览（一）的学习，也许你已经可以搭建一个比较完整的前端项目，但是对项目结构、模块化、工程化等概念还是不甚清晰，本章将一一讲解。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://shaonan028.github.io/img/blog/route-1.1.png">
+<meta property="article:published_time" content="2024-03-05T06:15:42.000Z">
+<meta property="article:modified_time" content="2024-03-06T05:54:30.259Z">
+<meta property="article:author" content="Kangaroo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://shaonan028.github.io/img/blog/route-1.1.png">
+  
+  
+  
+  <title>前端知识体系概览（二）—— 模块化和工程化 - Kangaroo&#39;s Bolg</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"shaonan028.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>袋鼠的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="前端知识体系概览（二）—— 模块化和工程化"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-05 14:15" pubdate>
+          2024年3月5日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">前端知识体系概览（二）—— 模块化和工程化</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>通过<a href="">前端知识体系概览（一）</a>的学习，也许你已经可以搭建一个比较完整的前端项目，但是对项目结构、模块化、工程化等概念还是不甚清晰，本章将一一讲解。</p>
+<span id="more"></span>
+
+<h1 id="1-项目结构与目录"><a href="#1-项目结构与目录" class="headerlink" title="1 项目结构与目录"></a>1 项目结构与目录</h1><p>假设现在你已经通过框架创建了一个新的项目，虽然使用不同的框架会导致项目目录的结构和层级有所差异，但他们大体都包含如下内容：</p>
+<ul>
+<li><strong><code>/app</code>：</strong> 存放项目的源代码<ul>
+<li><strong><code>/components</code>：</strong> 存放可复用的组件</li>
+<li><strong><code>/pages</code>：</strong> 存放页面级组件</li>
+<li><strong><code>/assets</code>：</strong> 存放静态资源文件，如图片、字体等</li>
+<li><strong><code>/styles</code>：</strong> 存放样式文件，如 CSS、Sass 等</li>
+<li><strong><code>/utils</code>：</strong> 存放通用工具函数</li>
+</ul>
+</li>
+<li><strong><code>/public</code>或<code>/libs</code>：</strong> 存放公共资源，比如公共组件、全局样式等</li>
+<li><strong><code>/node_modules</code>：</strong> 存放项目依赖的第三方包</li>
+<li><strong><code>/tools</code>：</strong> 存放辅助开发、构建和部署的工具脚本或配置文件</li>
+<li><strong><code>/build</code>或<code>/dist</code>：</strong> 存放构建、打包处理后最终生成的静态文件</li>
+<li><strong><code>/readme.md</code>：</strong> 项目的说明文件</li>
+<li><strong><code>package.json</code>或<code>yarn.lock</code>：</strong> 项目的配置文件，包含依赖信息、脚本命令等</li>
+<li><strong><code>webpack.config.js</code>或<code>babel.config.js</code>:</strong> 构建工具配置文件，用于配置项目的构建流程和打包流程</li>
+</ul>
+<p>从目录看，所涉及的知识点有：</p>
+<ul>
+<li><strong>框架的核心理念和实现方法</strong>：把写代码想像成搭房子，学会框架和基础知识的的使用方法就是拥有了建材和基础的瓦匠工技能。</li>
+<li><strong>组件化、模块化</strong>：学习如何搭建结构清晰、可维护的房屋结构。本质上就是调整代码的组织结构，将代码逻辑进行拆分，把复杂的系统拆分成独立的、可复用的组件。</li>
+<li><strong>模块化化</strong>：将代码拆分为不同模块，每个模块负责不同的功能（模块内部可以包含多个组件）。通过这种方式，可以提高代码的可维护性、可复用性、可拓展性。</li>
+<li><strong>工程化</strong>：现在我们已经掌握了如何用积木搭房子，但是在真实的房屋建造过程中，还需要考虑如何进行团队代码管理、版本更新、打包部署、持续集成、流程优化，就是工程化需要学习的内容。</li>
+</ul>
+<h1 id="2-工程化"><a href="#2-工程化" class="headerlink" title="2 工程化"></a>2 工程化</h1><p>截止到这里，我们学习的内容都是基于本地静态项目，如果想要实现最终的目的：在浏览器中输入 url 来访问我们的每日复盘网页，还需要学习更多关于更多工程化的知识。开始之前，让我们思考几个问题：</p>
+<ul>
+<li>如何将本地静态项目变成在互联网上可访问的资源？这之间经历了哪些流程？</li>
+<li>从团队协作的角度来讲，如何才能统一进行代码管理？</li>
+<li>如何实现线上应用的版本管理和更新？</li>
+</ul>
+<p>带着疑问，让我们来看看什么是工程化。</p>
+<h2 id="2-1-前端开发模式进化史"><a href="#2-1-前端开发模式进化史" class="headerlink" title="2.1 前端开发模式进化史"></a>2.1 前端开发模式进化史</h2><p>首先让我们回顾一下前端开发模式的演化历史，前端工程化正是为了应对这些演化中出现的挑战和需求而发展起来的：</p>
+<ul>
+<li>前后端混合：服务端渲染，javascript 仅实现交互</li>
+<li>前后端分离：借助 ajax 实现前后端分离、单页应用(SPA)等新模式</li>
+<li>模块化开发：npm 管理模块、Webpack 编译打包资源</li>
+<li>模块化 + MVVM：基于 React 或 Vue 等框架进行组件化开发，不再手动操作 html 元素</li>
+</ul>
+<h2 id="2-2-工程化含义"><a href="#2-2-工程化含义" class="headerlink" title="2.2 工程化含义"></a>2.2 工程化含义</h2><p>前端工程化是指使用一系列工具、技术和最佳实践来提高前端开发的效率、质量和可维护性的过程。它的核心目标是将前端开发视为一个工程项目，通过规范化、自动化和优化，使得团队能够更好地协作、开发和交付高质量的前端应用。</p>
+<ul>
+<li><strong>模块化开发</strong>：采用模块化开发的方式组织代码，将复杂的前端应用拆分为独立、可重用的模块，提高代码的可读性、可维护性和复用性。</li>
+<li><strong>版本管理和协作</strong>：使用版本管理系统（如 Git）来追踪代码变更和协作开发，确保团队成员之间的代码同步和合并。</li>
+<li><strong>构建</strong>：使用构建工具（如 Webpack、Parcel、Gulp 等）来处理代码的打包、压缩、转换和优化，以生成可部署的静态资源文件。</li>
+<li><strong>自动化测试</strong>：编写和运行自动化测试，包括单元测试、集成测试和端到端测试，以确保代码的质量和功能的稳定性。</li>
+<li><strong>代码规范</strong>：制定代码规范，并使用 Lint 工具（如 ESLint）检查代码是否符合规范，以提高代码质量和一致性。</li>
+<li><strong>自动化部署和持续集成</strong>：通过自动化脚本和持续集成工具（如 Jenkins、Travis CI 等）实现自动化部署和持续集成，简化部署流程和提高交付效率。</li>
+<li><strong>性能优化</strong>：优化前端应用的性能，包括文件大小优化、资源懒加载、缓存策略、代码分割等，以提升用户体验和页面加载速度。</li>
+</ul>
+<blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7291186181157535800?searchId=2024030116475185EF2DB24AAFBB8440AA">学习前端工程化 1️⃣——前端工程化与模块化</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903588553048077?searchId=2024022920533568EFC91A5BFA5A2B5FBC">前端工程化概述</a></li>
+</ul>
+</blockquote>
+<h1 id="3-模块化"><a href="#3-模块化" class="headerlink" title="3 模块化"></a>3 模块化</h1><h2 id="3-1-什么是前端模块化？"><a href="#3-1-什么是前端模块化？" class="headerlink" title="3.1 什么是前端模块化？"></a>3.1 什么是前端模块化？</h2><ul>
+<li>模块化是指将程序按照功能或逻辑划分为独立的模块，每个模块负责完成特定的功能，模块之间通过接口进行通信和交互。</li>
+<li>模块化的目的是提高代码的可维护性、复用性和可扩展性，使代码结构更清晰、更易于管理。</li>
+<li>模块化通常是在代码层面进行划分，可以采用不同的模块化规范和工具来实现，如 CommonJS、AMD、ES6 模块等。</li>
+</ul>
+<p>为什么要使用模块化？说白了，和组件化类似，但是模块化是从功能层级进行划分的。假设别人的库里有 4 个轮子，但是你只想引用一个 a 轮子，模块化保证了 a 轮子中的变量、命名、函数方法等内容完全独立，在需要的地方引用 a 轮子即可使用。在开发时使用模块化的思路也一样，将一类功能拆分出来，不论从项目管理还是逻辑层级的角度来讲，都非常的清晰。</p>
+<blockquote>
+<p>【拓展】<a target="_blank" rel="noopener" href="https://juejin.cn/post/6901178317366362120?searchId=2024022919433687B63DB756ED0C0B2901">理解模块化和总结各种模块化规范使用</a></p>
+</blockquote>
+<h2 id="3-2-模块化规范"><a href="#3-2-模块化规范" class="headerlink" title="3.2 模块化规范"></a>3.2 模块化规范</h2><p>前端模块是一种<strong>规范</strong>，而不是<strong>具体的实现</strong>。比方说 Node.js 实现了 CommonJS 规范，ES6 模块提供了 ESM 规范。这些规范有两个共性：</p>
+<ul>
+<li>将复杂程序根据规范拆分成若干模块，一个模块包括输入和输出</li>
+<li>模块的内部实现是私有的，对外暴露接口与其他模块通信</li>
+</ul>
+<h3 id="🌟CommonJS"><a href="#🌟CommonJS" class="headerlink" title="🌟CommonJS"></a>🌟CommonJS</h3><p>CommonJS 是 Node.js 中默认的模块化规范：</p>
+<p>文件级别的模块作用域(每个文件就是一个作用域)：每个 CommonJS 模块都有自己的作用域。<br>使用 require 函数来导入，通过 module.exports 导出。<br>CommonJS 模块是同步加载的，这意味着模块在导入时会阻塞执行，直到模块完全加载并可用，并且模块加载的顺序会按照其在代码中出现的顺序。<br>模块可以多次加载，首次加载的时候会运行模块并对输出结果进行缓存，再次加载时会直接使用缓存中的结果。</p>
+<h3 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h3><h3 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h3><h3 id="🌟ESM"><a href="#🌟ESM" class="headerlink" title="🌟ESM"></a>🌟ESM</h3><p>前面所说的几种模块化规范都必须在运行时才能确定依赖和输入输出，而 ESModule 的理念是在编译时就确定模块依赖的输入输出。</p>
+<blockquote>
+<p>⭐ CommonJS 和 ESModule 规范对比：</p>
+<ul>
+<li>CommonJS 模块输出的是值的拷贝，ESM 模块输出的是值的引用。</li>
+<li>CommonJS 模块是运行时加载，ESM 模块是编译时输出接口。</li>
+<li>CommonJS 是单个对象导出，多次导出会覆盖之前的结果；ESM 可以导出多个。</li>
+<li>CommonJS 模块是同步加载，ESM 支持异步加载。</li>
+<li>CommonJS 的 this 是当前模块，ESM 的 this 是 undefined。</li>
+</ul>
+</blockquote>
+<p>现在大多数浏览器中默认的模块化规范都是 ESM 了，作为一种规范它已经比较成熟了，但是我们在浏览器模块化问题上仍有一些问题未能解决：</p>
+<p>浏览器没有模块管理能力，模块分散在各个项目中无法复用。<br>性能加载慢，大型项目中无法直接使用。</p>
+<p>为了解决这两个问题，前端工程化又引入了两个新的工具：<br>引入 npm 负责管理模块，引入打包工具比如 webpack 进行打包聚合提高性能。</p>
+<h2 id="3-3-包管理工具"><a href="#3-3-包管理工具" class="headerlink" title="3.3 包管理工具"></a>3.3 包管理工具</h2><h3 id="🌟-npm"><a href="#🌟-npm" class="headerlink" title="🌟 npm"></a>🌟 npm</h3><p>npm（Node Package Manager）是 Node.js 的包管理器，它基于 Node.js 构建，用于安装、管理和发布 JavaScript 包。<br>在 npm 出现之前，开发者想要共享代码和复用代码只能使用复制粘贴的方式，但是当 npm 出现后，开发者可以将所有的模块上传到仓库(registry)中，借助 npm 安装、管理和发布轮子。</p>
+<blockquote>
+<p>【拓展】项目中 npm 包管理工具的应用：package.json&#x2F;yarn.lock 记录了项目依赖的包和其版本信息，并且能够通过 npm&#x2F;yarn 执行代码检查&#x2F;打包构建等自定义脚本；node_modules 文件夹内存储了使用 npm&#x2F;yarn 依赖的第三方包。使用时通过 npm publish 命令发布模块，通过 npm install 命令安装指定模块到 node_modules 目录。</p>
+</blockquote>
+<h3 id="🌟-yarn"><a href="#🌟-yarn" class="headerlink" title="🌟 yarn"></a>🌟 yarn</h3><h3 id="pnpm"><a href="#pnpm" class="headerlink" title="pnpm"></a>pnpm</h3><p>yarn 和 pnpm 都是 javascript 包管理工具，只不过基于 npm 做了一些改进和变更，并且在应用时有细微的差异，更多内容可以查看官方文档。</p>
+<blockquote>
+<p>【官方文档】</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.npmjs.com/">npm 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://yarn.nodejs.cn/en/docs/install">yarn 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.pnpm.cn/motivation">pnpm 官方文档</a></li>
+</ul>
+</blockquote>
+<p>【拓展】</p>
+<blockquote>
+<ul>
+<li><strong>什么是 Node.js？</strong><br>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时环境，支持在服务器端运行 JavaScript 代码，这使得前端开发人员可以在本地运行 JavaScript 代码，调试和测试前端应用程序。</li>
+<li><strong>什么是运行时环境？</strong><br>运行时环境（Runtime Environment）是指程序在运行时所需的支持环境和资源，用于执行和管理程序代码。运行时环境提供了一系列必要的功能和服务，使得程序能够在特定的平台或环境中正常运行。<br>在软件开发中，不同的编程语言和框架通常需要特定的运行时环境来解释和执行代码。例如，JavaScript 需要浏览器环境或 Node.js 环境来执行，Java 需要 Java 虚拟机（JVM），Python 需要 Python 解释器等。</li>
+</ul>
+</blockquote>
+  <!-- [带你入坑Nodejs（一）](https://juejin.cn/post/6994255090219483172?searchId=202402281723092EAA9B8D9B37FE6EE9A6)
+  [带你入坑Nodejs（二）](https://juejin.cn/post/6994980351298764808) -->
+
+<!-- 运行时环境通常包括以下内容：
+解释器或编译器：用于将源代码转换为可执行代码的工具，如JavaScript的V8引擎、Java的JVM、Python的解释器等。
+库和依赖项：程序执行时所需的各种库、框架和依赖项，以支持程序功能的实现。
+内存管理：用于分配和释放内存资源，确保程序正常运行并避免内存泄漏。
+输入/输出处理：处理程序与外部环境之间的输入和输出操作，如文件操作、网络通信等。
+错误处理和异常处理：捕获和处理程序中可能出现的错误和异常，确保程序稳定性和可靠性。 -->
+
+<h1 id="4-版本管理和协作（Git）"><a href="#4-版本管理和协作（Git）" class="headerlink" title="4. 版本管理和协作（Git）"></a>4. 版本管理和协作（Git）</h1><h2 id="4-1-版本管理工具"><a href="#4-1-版本管理工具" class="headerlink" title="4.1 版本管理工具"></a>4.1 版本管理工具</h2><p>在开发中，版本管理和团队协作尤为重要，借助版本管理工具，能够实现开发变更记录可回溯、同步开发等目标。</p>
+<!-- - 开发变更记录可回溯：通过版本管理工具，可以清晰地记录每次代码变更的内容和历史，使得团队能够轻松地回溯到任何一个特定的开发阶段，查看代码的变化和修复bug的过程。
+- 协作开发：版本管理工具允许团队成员同时对同一个代码库进行修改，并能够合并彼此的变更，从而实现多人协作开发的目标。
+- 代码冲突解决：当多名开发者同时修改同一部分代码时，可能会产生冲突。版本管理工具能够帮助团队发现并解决这些冲突，确保代码的一致性和质量。
+- 稳定发布：通过版本管理工具的分支管理功能，可以实现稳定发布和开发分离，确保稳定版本和开发版本的独立性。 -->
+
+<p>版本管理工具的发展历史：</p>
+<ul>
+<li><strong>本地版本控制系统</strong>：在本地电脑上采用简单数据库控制版本变更</li>
+<li><strong>集中化的版本控制系统</strong>：比如 SVN，使用单一的集中管理的服务器，存储所有的文件修订版本。但是当中央服务器出现单点故障时，将对所有开发工作造成影响。</li>
+<li><strong>分布式版本控制系统</strong>：比如 Git，Mercurial 以及 Darcs 等，每一个电脑上都存储了整个代码仓库的完备记录，任何一处协同工作的服务器出现故障时，都可以从其他镜像的本地仓库进行复原。</li>
+</ul>
+<h2 id="4-2-Git-基本概念常用命令"><a href="#4-2-Git-基本概念常用命令" class="headerlink" title="4.2 Git 基本概念常用命令"></a>4.2 Git 基本概念常用命令</h2><ul>
+<li><strong>仓库（Repository）</strong>：Git 使用仓库来存储代码和版本历史记录。</li>
+<li><strong>远程仓库（Remote Repository）</strong>：远程仓库是存储在网络上的 Git 仓库，通常用于团队协作。</li>
+<li><strong>本地仓库（Locale Repository）</strong>：本地仓库存储了网络上的 Git 仓库的完整备份，包含了工作区、暂存区和版本历史（Commit History）。开发者可以通过在本地仓库进行提交、分支操作等来管理项目的版本控制，而不需要依赖于网络连接或远程服务器。。</li>
+<li><strong>暂存区（Staging Area）</strong>：暂存区是一个临时存储区域，用于存放将要提交到版本库的修改。</li>
+<li><strong>工作区（Working Directory）</strong>：工作区是指开发者用来修改和编辑文件的本地目录。</li>
+<li><strong>分支（Branch）</strong>：分支是独立于主线开发的代码副本，可以用于实现不同功能的并行开发。</li>
+<li><strong>提交（Commit）</strong>：提交是将代码更改记录到版本历史记录中的操作。</li>
+<li><strong>合并（Merge）</strong>：合并是将不同分支的更改合并到一起的操作。</li>
+</ul>
+<blockquote>
+<ul>
+<li>【拓展知识】SSH（见8.2手动部署——SSH和SFTP协议）</li>
+<li>【拓展知识】<a target="_blank" rel="noopener" href="https://juejin.cn/post/7247027696822517819?searchId=20240306105647AB008252513BA7EBF438">如何配置 SSH 管理多个 Git 仓库和以及多个 Github 账号</a>在数字签名中，公钥也用于验证私钥持有者的身份。私钥持有者使用私钥对数据进行签名，然后将签名与数据一起发送给接收方。接收方使用发送方的公钥来验证签名的有效性，以确认发送方的身份和数据的完整性。</li>
+</ul>
+</blockquote>
+<h1 id="5-构建"><a href="#5-构建" class="headerlink" title="5. 构建"></a>5. 构建</h1><h2 id="5-1-为什么需要构建"><a href="#5-1-为什么需要构建" class="headerlink" title="5.1 为什么需要构建"></a>5.1 为什么需要构建</h2><ul>
+<li>浏览器并不能直接解析源代码（比如 less、TypeScript 等），因此需要借助构建工具将源代码转换、优化和打包成浏览器可以解析的静态资源。</li>
+<li>在打包构建的过程中，会对模块重组优化，从而提高性能</li>
+<li>进行依赖管理，以确保项目中所需要的插件和库都能被正确的集成和引用。</li>
+</ul>
+<h2 id="5-2-构建工具"><a href="#5-2-构建工具" class="headerlink" title="5.2 构建工具"></a>5.2 构建工具</h2><table>
+<thead>
+<tr>
+<th>构建工具</th>
+<th>特性</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Webpack</td>
+<td>Webpack 是一个强大的模块打包工具，它可以处理各种类型的资源，并提供丰富的插件和配置选项，用于实现代码分割、按需加载、压缩等功能。</td>
+<td></td>
+</tr>
+<tr>
+<td>Parcel</td>
+<td>Parcel 是一个零配置的前端打包工具，它支持多种类型的资源，并具有快速打包的特点，适用于小型项目或快速原型开发。</td>
+<td></td>
+</tr>
+<tr>
+<td>Gulp</td>
+<td>Gulp 是一个基于任务的构建工具，它通过定义任务和处理管道来实现自动化构建。Gulp 可以灵活地处理各种任务，如文件合并、压缩、编译等。</td>
+<td></td>
+</tr>
+<tr>
+<td>Grunt</td>
+<td>是一个基于任务的 JavaScript 工程命令行构建工具。Grunt 生态系统非常庞大，并且一直在增长。由于拥有数量庞大的插件可供选择，因此，你可以利用 Grunt 自动完成任何事，并且花费最少的代价。</td>
+<td></td>
+</tr>
+<tr>
+<td>Vite</td>
+<td>开发模式下借助浏览器对 ESM 的支持，采用 nobundle 的方式进行构建，能提供极致的开发体验；生产模式下则基于 rollup 进行构建。</td>
+<td></td>
+</tr>
+<tr>
+<td>Esbuild</td>
+<td>基于 go 语言实现，代码直接编译成机器码(不用像 js 那样先解析为字节码，再编译为机器码)，构建速度比 webpack 更快。</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7250730877372645431?searchId=202403051441292DEE4CB68236E67D8E53#heading-13">浅谈前端工程化</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7121279495494959111?searchId=202403011101312ADE19147BB02F612558">漫谈构建工具(一): 最近对前端构建工具的一些理解</a></li>
+</ul>
+</blockquote>
+<h2 id="5-3-构建中的操作"><a href="#5-3-构建中的操作" class="headerlink" title="5.3 构建中的操作"></a>5.3 构建中的操作</h2><ul>
+<li>解析 html</li>
+<li>es6 代码转换为 es5</li>
+<li>less &#x2F; sass 代码转换为 css 代码</li>
+<li>代码检查</li>
+<li>代码压缩</li>
+<li>代码混淆</li>
+</ul>
+<p>注：构建后的代码一般放在 dist 文件夹目录下</p>
+<h1 id="6-自动化测试"><a href="#6-自动化测试" class="headerlink" title="6.自动化测试"></a>6.自动化测试</h1><p>TODO：待完善</p>
+<table>
+<thead>
+<tr>
+<th>测试类型</th>
+<th>测试框架</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单元测试</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>集成测试</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>UI 测试</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>端到端(e2e)测试</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>快照测试</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>【待看】<a target="_blank" rel="noopener" href="https://juejin.cn/post/7303789262989017099?searchId=20240305195443291C1BC4448458A19511#heading-7">前端自动化 UI 测试的完整方案</a></p>
+</blockquote>
+<h1 id="7-代码规范"><a href="#7-代码规范" class="headerlink" title="7. 代码规范"></a>7. 代码规范</h1><ul>
+<li>在团队开发过程中，需要设定统一的代码规范，保证项目代码风格统一。</li>
+<li>检查基础的语法错误，保证代码质量。</li>
+</ul>
+<p>TODO：待完善</p>
+<table>
+<thead>
+<tr>
+<th>代码风格化工具</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ESLint</td>
+<td>代码质量、错误检查</td>
+</tr>
+<tr>
+<td>Prettier</td>
+<td>风格检查</td>
+</tr>
+</tbody></table>
+<blockquote>
+<ul>
+<li>【待看】<a target="_blank" rel="noopener" href="https://juejin.cn/post/6936519604697038879">彻底搞懂 ESLint 与 Prettier 之间的爱恨情仇</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7295805817055166502">Eslint 团队终于妥协了…</a></li>
+</ul>
+</blockquote>
+<h1 id="8-项目部署流程"><a href="#8-项目部署流程" class="headerlink" title="8. 项目部署流程"></a>8. 项目部署流程</h1><h2 id="8-1-什么是部署"><a href="#8-1-什么是部署" class="headerlink" title="8.1 什么是部署"></a>8.1 什么是部署</h2><p>将本地静态资源文件上传至服务器&#x2F;云端存储空间，从而确保从外部可以访问这些文件。</p>
+<p>部署流程总览：<br><img src="/img/blog/route-1.1.png" srcset="/img/loading.gif" lazyload alt="部署流程" title="部署流程"></p>
+<h2 id="8-2-手动部署"><a href="#8-2-手动部署" class="headerlink" title="8.2 手动部署"></a>8.2 手动部署</h2><p>为将本地文件上传至服务器，通常需使用 SFTP 协议（在 macOS 系统上），通过提供连接信息（包括 IP 地址、用户名、密码等），在本地客户端输入指令以登录到远程服务器。连接成功后，可执行相应操作，进行文件传输或管理。</p>
+<p>只要掌握SFTP的基本语法，就可以实现静态文件上传，即手动部署。但是还可以深入学习以下内容：</p>
+<h3 id="1-SSH-和-SFTP-协议"><a href="#1-SSH-和-SFTP-协议" class="headerlink" title="1.SSH 和 SFTP 协议"></a>1.SSH 和 SFTP 协议</h3><p><strong>SSH（Secure Shell，安全外壳协议）</strong>是一种网络安全传输协议，用于通过加密通信提供安全的远程登录和执行命令的方式。</p>
+<p><strong>SFTP（SSH File Transfer Protocol）</strong>是一种安全文件传输协议，它通过 SSH（Secure Shell）协议进行数据传输，提供了对文件的安全上传、下载和管理。</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>macOS 客户端</th>
+<th>windows 客户端</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SSH</td>
+<td>macOS 终端</td>
+<td>第三方 SSH 客户端软件（如 PuTTY、Git Bash、Windows Terminal 等）</td>
+</tr>
+<tr>
+<td>SFPT</td>
+<td>macOS 终端</td>
+<td>第三方软件（如 FileZilla、WinSCP 等）</td>
+</tr>
+</tbody></table>
+<p>SSH 和 SFTP 的区别：</p>
+<ul>
+<li><p>功能：SSH 用于远程登录和执行命令，提供了对远程服务器的终端访问和管理。它可以在远程服务器上执行命令、编辑文件等操作。而 SFTP 专注于文件传输，提供了对远程文件系统的访问和操作，包括文件上传、下载、目录操作等。</p>
+</li>
+<li><p>加密与安全性：SSH 和 SFTP 都使用加密通信，确保数据在传输过程中的机密性。SSH 通过加密终端会话和命令执行来保护远程登录的安全。而 SFTP 使用 SSH 协议的安全性进行文件传输，保证了文件的安全性和完整性。</p>
+</li>
+<li><p>传输方式：SSH 传输的是命令和输出结果，通过终端会话进行交互。而 SFTP 传输的是文件，可以进行文件的上传、下载和管理。</p>
+</li>
+<li><p>使用场景：SSH 广泛用于远程服务器管理、终端操作和远程命令执行。它适用于需要远程登录和管理服务器的情况。而 SFTP 主要用于文件传输、备份和同步等需求，适用于需要安全传输文件的场景。</p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>【拓展学习】命令行解释器（用户和操作系统交互的桥梁），常见的 Unix&#x2F;Linux 系统中的 Shell 包括 Bash（Bourne Again Shell）、Zsh（Z Shell）、Ksh（Korn Shell）、Csh（C Shell）等，每种 Shell 都有其特定的功能和语法。使用 SSH 和远程服务器建立连接后，由目标服务器的 shell 解析具体的操作命令。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>通过私钥&#x2F;公钥实现连接（在 git 中配置公钥）<a target="_blank" rel="noopener" href="https://juejin.cn/post/7205138514869567548?searchId=20240306105647AB008252513BA7EBF438">ssh 远程连接方式总结</a></li>
+</ul>
+</blockquote>
+<h3 id="2-Nginx"><a href="#2-Nginx" class="headerlink" title="2.Nginx"></a>2.Nginx</h3><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903701459501070?searchId=202403061338529CEF534E000A4BFED3C4">前端必会的 Nginx入门视频教程(共11集)-技术胖</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7287781316589125687?searchId=202403061338529CEF534E000A4BFED3C4">浅谈前端需要掌握的Nginx知识内容</a></li>
+</ul>
+</blockquote>
+<h2 id="8-3-自动化部署"><a href="#8-3-自动化部署" class="headerlink" title="8.3 自动化部署"></a>8.3 自动化部署</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7235091963312717885?searchId=202403052001006FEAE04A59A0E7A0193A">一步步实现Nginx +Docker + Jenkins前端自动化部署</a></li>
+</ul>
+</blockquote>
+<h1 id="9-持续集成与自动化部署"><a href="#9-持续集成与自动化部署" class="headerlink" title="9. 持续集成与自动化部署"></a>9. 持续集成与自动化部署</h1><p>探讨持续集成的概念和重要性<br>介绍如何利用持续集成工具实现自动化测试、构建和部署</p>
+<!--
+可参考的行文结构：
+1. 引言
+在引言部分，介绍前端开发的重要性和前端项目在现代互联网应用中的角色。简要介绍本文将讨论的内容，以及为什么了解前端项目的完整流程对于前端开发者和团队至关重要。
+
+2. 前端项目概览
+这一部分可以介绍前端项目的概念，包括前端项目的组成部分、前端开发的基本工作流程、常用的技术栈和工具等。可以简要介绍前端项目的开发、部署和持续集成等方面。
+
+3. 从页面呈现到网页
+3.1 页面布局与设计
+介绍页面布局的重要性和基本原则
+讨论响应式设计和移动优先策略
+3.2 前端开发流程
+讨论前端开发的基本流程，包括需求分析、设计、编码、测试等阶段
+引入前端开发中常用的技术和工具，如 HTML、CSS、JavaScript、前端框架等
+3.3 页面交互与用户体验
+探讨页面交互设计和用户体验优化的重要性
+介绍常见的前端交互设计技巧和最佳实践
+4. 前端项目的开发
+4.1 项目架构与组织
+讨论前端项目的架构设计原则和常见的项目组织结构
+介绍如何建立可维护、可扩展的前端项目
+4.2 开发工具与环境
+探讨前端开发中常用的开发工具和集成环境
+介绍代码编辑器、版本控制工具、包管理器等工具的使用
+5. 前端项目的部署与持续集成
+5.1 项目部署流程
+介绍前端项目部署的基本流程和方法
+讨论静态资源的优化和压缩，以提升网页加载性能
+5.2 持续集成与自动化部署
+探讨持续集成的概念和重要性
+介绍如何利用持续集成工具实现自动化测试、构建和部署
+6. 总结
+总结全文内容，强调前端项目开发的重要性和复杂性。回顾从页面呈现到网页的完整流程，并鼓励读者进一步深入学习和实践前端项目开发。
+
+7. 参考资料
+列出本文中涉及的相关参考资料、工具和资源，供读者深入学习和了解更多有关前端项目开发的内容。
+
+通过以上结构，你可以清晰地呈现前端项目从页面呈现到网页的完整流程，同时帮助读者理解前端开发的基础知识结构和相关技术。希望这个建议对你有所帮助！如果有其他问题，请随时提出。
+ -->
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>前端知识体系概览（二）—— 模块化和工程化</div>
+      <div>https://shaonan028.github.io/2024/03/05/前端知识体系概览（二）——-模块化和工程化/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Kangaroo</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/02/27/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E6%A6%82%E8%A7%88%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" title="前端知识体系概览（一）——基础入门">
+                        <span class="hidden-mobile">前端知识体系概览（一）——基础入门</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

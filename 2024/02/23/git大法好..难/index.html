@@ -16,16 +16,16 @@
   <meta name="author" content="Kangaroo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="说起来使用 Git 已经 7 月有余，虽然不至于再出现合并冲突把别人代码覆盖的的低级错误，但是还是会遇到各种问题，反复学习了若干次 Git，只是熟悉了一些基本的操作，遇到问题时还是解释清楚。但是没关系，多学几遍总会明白的。">
+    <meta name="description" content="说起来使用 Git 已经 7 月有余，虽然不至于再出现合并冲突把别人代码覆盖的的低级错误，但是还是会遇到各种问题，反复学习了若干次 Git，只是熟悉了一些基本的操作，遇到问题时还是解释清楚。但是没关系，查漏补缺，多学几遍总会明白的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git大法好...难">
 <meta property="og:url" content="https://shaonan028.github.io/2024/02/23/git%E5%A4%A7%E6%B3%95%E5%A5%BD..%E9%9A%BE/index.html">
 <meta property="og:site_name" content="Kangaroo&#39;s Bolg">
-<meta property="og:description" content="说起来使用 Git 已经 7 月有余，虽然不至于再出现合并冲突把别人代码覆盖的的低级错误，但是还是会遇到各种问题，反复学习了若干次 Git，只是熟悉了一些基本的操作，遇到问题时还是解释清楚。但是没关系，多学几遍总会明白的。">
+<meta property="og:description" content="说起来使用 Git 已经 7 月有余，虽然不至于再出现合并冲突把别人代码覆盖的的低级错误，但是还是会遇到各种问题，反复学习了若干次 Git，只是熟悉了一些基本的操作，遇到问题时还是解释清楚。但是没关系，查漏补缺，多学几遍总会明白的。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://shaonan028.github.io/img/blog/git-1.1.png">
 <meta property="article:published_time" content="2024-02-23T07:04:05.000Z">
-<meta property="article:modified_time" content="2024-02-26T11:43:38.841Z">
+<meta property="article:modified_time" content="2024-03-06T05:37:40.384Z">
 <meta property="article:author" content="Kangaroo">
 <meta property="article:tag" content="基础知识">
 <meta name="twitter:card" content="summary_large_image">
@@ -275,13 +275,13 @@
             
               <div class="markdown-body">
                 
-                <p>说起来使用 Git 已经 7 月有余，虽然不至于再出现合并冲突把别人代码覆盖的的低级错误，但是还是会遇到各种问题，反复学习了若干次 Git，只是熟悉了一些基本的操作，遇到问题时还是解释清楚。但是没关系，多学几遍总会明白的。</p>
+                <p>说起来使用 Git 已经 7 月有余，虽然不至于再出现合并冲突把别人代码覆盖的的低级错误，但是还是会遇到各种问题，反复学习了若干次 Git，只是熟悉了一些基本的操作，遇到问题时还是解释清楚。但是没关系，查漏补缺，多学几遍总会明白的。</p>
 <span id="more"></span>
 
 <h1 id="1-发展历史与原理"><a href="#1-发展历史与原理" class="headerlink" title="1. 发展历史与原理"></a>1. 发展历史与原理</h1><h2 id="1-1-版本控制系统发展历史与分类"><a href="#1-1-版本控制系统发展历史与分类" class="headerlink" title="1.1 版本控制系统发展历史与分类"></a>1.1 版本控制系统发展历史与分类</h2><ol>
-<li><strong>本地版本控制系统</strong>（在本地电脑上采用简单数据库控制版本变更）</li>
-<li><strong>集中化的版本控制系统</strong>（使用单一的集中管理的服务器，存储所有的文件修订版本。但是当中央服务器出现单点故障时，将对所有开发工作造成影响。）</li>
-<li><strong>分布式版本控制系统</strong>（比如 Git，Mercurial 以及 Darcs 等，每一个电脑上都存储了整个代码仓库的完备记录，任何一处协同工作的服务器出现故障时，都可以从其他镜像的本地仓库进行复原。</li>
+<li><strong>本地版本控制系统</strong>：在本地电脑上采用简单数据库控制版本变更。</li>
+<li><strong>集中化的版本控制系统</strong>：使用单一的集中管理的服务器，存储所有的文件修订版本。但是当中央服务器出现单点故障时，将对所有开发工作造成影响。</li>
+<li><strong>分布式版本控制系统</strong>：比如 Git，Mercurial 以及 Darcs 等，每一个电脑上都存储了整个代码仓库的完备记录，任何一处协同工作的服务器出现故障时，都可以从其他镜像的本地仓库进行复原。</li>
 </ol>
 <h2 id="1-2-原理"><a href="#1-2-原理" class="headerlink" title="1.2 原理"></a>1.2 原理</h2><p>Git 与其他分支控制系统最大的差异是对待数据的形式，它直接记录了文件快照，而非记录文件的变更量。从概念上来说，其它大部分系统以文件变更列表的方式存储信息，这类系统（CVS、Subversion、Perforce 等等） 将它们存储的信息看作是一组基本文件和每个文件随时间逐步累积的差异 （它们通常称作 <strong>基于差异（delta-based</strong> 的版本控制）。</p>
 <p>在 Git 中，更像是把数据看作小型文件系统的一系列快照。当文件发生变更时，就会对当前的所有文件创建一个快照，并且记录指向这个快照的索引。为了提高效率，当文件没有发生变更时，git 就不会再保存文件，而是记录一个链接指向之前的存储的文件。</p>
@@ -620,9 +620,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/27/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%98%AF%E5%A6%82%E4%BD%95%E4%BB%8E%E9%A1%B5%E9%9D%A2%E5%91%88%E7%8E%B0%E5%88%B0%E7%BD%91%E9%A1%B5%E7%9A%84%EF%BC%9F/" title="如何从0构建一个前端项目？（前端学习路径概览）">
+                      <a href="/2024/02/27/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E6%A6%82%E8%A7%88%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" title="前端知识体系概览（一）——基础入门">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">如何从0构建一个前端项目？（前端学习路径概览）</span>
+                        <span class="hidden-mobile">前端知识体系概览（一）——基础入门</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
