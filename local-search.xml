@@ -4,6 +4,45 @@
   
   
   <entry>
+    <title>百日计划（Day1）</title>
+    <link href="/2024/06/24/%E7%99%BE%E6%97%A5%E8%AE%A1%E5%88%92%EF%BC%88Day1%EF%BC%89/"/>
+    <url>/2024/06/24/%E7%99%BE%E6%97%A5%E8%AE%A1%E5%88%92%EF%BC%88Day1%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<p>给自己设定了一个百日计划，虽然具体的执行内容还没有确定，但是只有先行动起来，才有可能真正完成。以后每天都要记录一篇这样的文档，看过的内容全都丢进来，第二天复习。</p><span id="more"></span><h3 id="学习计划类别"><a href="#学习计划类别" class="headerlink" title="学习计划类别"></a>学习计划类别</h3><h2 id="前端基础"><a href="#前端基础" class="headerlink" title="前端基础"></a>前端基础</h2><h2 id="前端手撕"><a href="#前端手撕" class="headerlink" title="前端手撕"></a>前端手撕</h2><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h1 id="今日题目：三数之和"><a href="#今日题目：三数之和" class="headerlink" title="今日题目：三数之和"></a>今日题目：三数之和</h1><p>给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i !&#x3D; j、i !&#x3D; k 且 j !&#x3D; k ，同时还满足 nums[i] + nums[j] + nums[k] &#x3D;&#x3D; 0 。请</p><p>你返回所有和为 0 且不重复的三元组。</p><p>注意：答案中不可以包含重复的三元组。</p><h2 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h2><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul><li>学习 md 的使用方法</li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>markdown的基本使用方法</title>
+    <link href="/2024/06/22/markdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    <url>/2024/06/22/markdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<p>好记性不如烂笔头，后续用到 markdown 的次数还很多，记录一下基本的使用方法和案例。</p><span id="more"></span><h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1. 标题"></a>1. 标题</h3>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>移动端导航栏吸顶效果开发记录</title>
+    <link href="/2024/05/21/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%90%B8%E9%A1%B6%E6%95%88%E6%9E%9C%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/"/>
+    <url>/2024/05/21/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%90%B8%E9%A1%B6%E6%95%88%E6%9E%9C%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<p>在 uniapp 中，如何实现类似于抖音个人中心的效果？包含顶部搜索栏，顶部内容以及下方可吸附的导航栏。</p><span id="more"></span><p>页面结构如图所示：<br><img src="/img/blog/xiding-1.jpg" alt="图1-页面内容" title="图1-页面内容"></p><p>理想的实现效果：<br><img src="/img/blog/xiding-2.jpg" alt="图2-理想实现效果" title="图2-理想实现效果"></p><h3 id="可能的解决方法及问题"><a href="#可能的解决方法及问题" class="headerlink" title="可能的解决方法及问题"></a>可能的解决方法及问题</h3><ol><li><p>监听页面 scroll 事件，滚动到一定距离后为 tab 栏设置 position:fixed。原生的写法，比较麻烦。</p></li><li><p>尝试使用 position-sticky 实现，但是由于兼容性较差，并且针对上图的布局不能取得很好的效果。</p></li></ol><ul><li>由于顶部有固定的搜索栏，h5 和 app 中的实现方式不同，不同设备下 tab 与顶部的距离不同，需要考虑适配问题。</li><li>为 tab 栏增加 postion:fixed 后，当从下往上滑动至一定高度时，再去除该属性，会出现页面闪烁的情况（此时相当于在原本视图内插入了一个 div）</li></ul><ol start="3"><li>（最终解决方法）使用 uni-app 提供的 u-sticky 组件（其本质仍然是 position: sticky，但是具备更好的兼容性），此时，新的问题又出现了：</li></ol><ul><li>在 tab 栏吸顶状态下，切换分区，发现会丢失吸顶状态</li><li>解决上个问题后，发现切换分区时，新分区会保持和上一个分区相同的浏览位置</li><li>解决上个问题后，发现切换分区后，下方区域 card 紧贴 tab（实际他们之间应该存在一定距离）</li></ul><h3 id="关键方法及代码回顾"><a href="#关键方法及代码回顾" class="headerlink" title="关键方法及代码回顾"></a>关键方法及代码回顾</h3><ol><li>使用<u-sticky>包裹需要吸顶的内容</li></ol><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">u-sticky</span> <span class="hljs-attr">bgColor</span>=<span class="hljs-string">&quot;#ffffff&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span><br>  <span class="hljs-comment">&lt;!--具体的传参及含义可以参考u-tab的组件说明--&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">u-tab</span> <span class="hljs-attr">:fileList</span>=<span class="hljs-string">&quot;fileList&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">u-tab</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">u-sticky</span>&gt;</span><br></code></pre></td></tr></table></figure><p>实际的实现效果：<br><img src="/img/blog/xiding-3.jpg" alt="图3-实际实现效果" title="图1-实际实现效果"></p><h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><ul><li><a href="https://juejin.cn/post/6844903815041269774?searchId=202406221739536B240A19DE9E9A249AD5">【前端词典】5 种滚动吸顶实现方式的比较[性能升级版]</a></li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>前端知识体系概览（二）—— 模块化和工程化</title>
     <link href="/2024/03/05/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E6%A6%82%E8%A7%88%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94-%E6%A8%A1%E5%9D%97%E5%8C%96%E5%92%8C%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
     <url>/2024/03/05/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E6%A6%82%E8%A7%88%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94-%E6%A8%A1%E5%9D%97%E5%8C%96%E5%92%8C%E5%B7%A5%E7%A8%8B%E5%8C%96/</url>
