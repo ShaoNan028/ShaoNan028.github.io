@@ -1,0 +1,827 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/dog.png">
+  <link rel="icon" href="/img/dog.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#285943">
+  <meta name="author" content="Kangaroo">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大佬不愧是大佬，三年前写的通用组件我们到现在都还在用，扒拉一下，好好学习学习。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="管理端通用组件封装">
+<meta property="og:url" content="https://shaonan028.github.io/2024/07/02/%E7%AE%A1%E7%90%86%E7%AB%AF%E9%80%9A%E7%94%A8%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/index.html">
+<meta property="og:site_name" content="Kangaroo&#39;s Bolg">
+<meta property="og:description" content="大佬不愧是大佬，三年前写的通用组件我们到现在都还在用，扒拉一下，好好学习学习。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://shaonan028.github.io/2024/07/02/%E7%AE%A1%E7%90%86%E7%AB%AF%E9%80%9A%E7%94%A8%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/ipv4-range.jpg">
+<meta property="article:published_time" content="2024-07-02T09:45:30.000Z">
+<meta property="article:modified_time" content="2024-07-03T11:19:40.387Z">
+<meta property="article:author" content="Kangaroo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://shaonan028.github.io/2024/07/02/%E7%AE%A1%E7%90%86%E7%AB%AF%E9%80%9A%E7%94%A8%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/ipv4-range.jpg">
+  
+  
+  
+  <title>管理端通用组件封装 - Kangaroo&#39;s Bolg</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"shaonan028.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 75vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>袋鼠的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/back.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="管理端通用组件封装"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-07-02 17:45" pubdate>
+          2024年7月2日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">管理端通用组件封装</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>大佬不愧是大佬，三年前写的通用组件我们到现在都还在用，扒拉一下，好好学习学习。</p>
+<span id="more"></span>
+
+<p>在管理端，经常需要输入 ip&#x2F;MAC 地址作为搜索条件进行搜索，如果在每个业务组件中都进行重复的格式判别和转换，将非常繁琐。因此，封装可复用的输入类型组件就非常必要了。</p>
+<p>主要的类型有：</p>
+<ol>
+<li>普通输入</li>
+</ol>
+<ul>
+<li>ipv4&#x2F;ipv6 地址输入框</li>
+<li>mac 地址输入框</li>
+<li>数字范围输入框</li>
+<li>树选择器</li>
+</ul>
+<ol start="2">
+<li>含匹配规则的输入</li>
+</ol>
+<ul>
+<li>ipv4&#x2F;ipv6：等于、不等于、大于等于、小于、小于等于、至、包含</li>
+<li>mac：等于、不等于、包含</li>
+<li>设备端口：等于、不等于、包含、正则</li>
+</ul>
+<h1 id="1-ipv4-格式输入框"><a href="#1-ipv4-格式输入框" class="headerlink" title="1 ipv4 格式输入框"></a>1 ipv4 格式输入框</h1><p>ipv4 格式输入框：<app-ipv4-input></p>
+<h2 id="1-1-使用方法"><a href="#1-1-使用方法" class="headerlink" title="1.1 使用方法"></a>1.1 使用方法</h2><p>调用组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">app-ipv4-input</span></span><br><span class="hljs-tag">  <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%&quot;</span></span><br><span class="hljs-tag">  [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;params.value&quot;</span></span><br><span class="hljs-tag">  [<span class="hljs-attr">key</span>]=<span class="hljs-string">&quot;params.il8n&quot;</span></span><br><span class="hljs-tag">  (<span class="hljs-attr">inputChange</span>)=<span class="hljs-string">&quot;params.value = $event&quot;</span></span><br><span class="hljs-tag">  (<span class="hljs-attr">ipCheckResult</span>)=<span class="hljs-string">&quot;xxx&quot;</span></span><br><span class="hljs-tag">  [<span class="hljs-attr">forAdvanceSearch</span>]=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">app-ipv4-input</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 使用ipCheckResult判别是否显示错误校验 --&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="1-2-组件属性方法"><a href="#1-2-组件属性方法" class="headerlink" title="1.2 组件属性方法"></a>1.2 组件属性方法</h2><p>自定义 input 组件，应该能够实现 input 组件的基本方法，并且支持在 form 表单中使用。</p>
+<p>html 属性：</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>含义</th>
+<th>默认值&#x2F;绑定值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[placeholder]</td>
+<td>input 占位文本</td>
+<td>根据 forAdvanceSearch 判断</td>
+</tr>
+<tr>
+<td>[(ngModel)]</td>
+<td>input 双向绑定值</td>
+<td>组件属性 showipValue</td>
+</tr>
+<tr>
+<td>[disabled]</td>
+<td>input 是否禁用</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td>[class.error]</td>
+<td>是否显示.error 样式</td>
+<td>组件属性 formateError</td>
+</tr>
+<tr>
+<td>[class.ok]</td>
+<td>是否显示.ok 样式（为空）</td>
+<td>组件属性 formateError 取反</td>
+</tr>
+<tr>
+<td>(blur)</td>
+<td>input 失去焦点时，触发的事件</td>
+<td>keyUp()</td>
+</tr>
+<tr>
+<td>(keydown)</td>
+<td>input 在按下按键时触发的事件</td>
+<td>onKeyDown($event)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>blur 和 keydown 是原生 input 的事件，继承于 Element 类，Element 是最通用的基类，Document 中所有元素对象（即表示元素的对象）都继承于它。它具有各种元素公共的方法和属性。更具体的类则继承于 Element。<br>例如，HTMLElement 接口是所有 HTML 元素的基本接口。同样，SVGElement 接口是所有 SVG 元素的基本接口，而 MathMLElement 接口则是 MathML 元素的基础接口。大多数功能是在这个类的更深层级的接口中被进一步制定的。</p>
+</blockquote>
+<p>ts 属性：</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>装饰器&#x2F;类型</th>
+<th>含义</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>forAdvanceSearch</td>
+<td>@Input()</td>
+<td>是否为高级搜索（决定了 placehodler 展示的内容）</td>
+<td></td>
+</tr>
+<tr>
+<td>key</td>
+<td>@Input()</td>
+<td>组件的 key 值，并在 placeholder 内显示</td>
+<td>‘input’</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>@Input()</td>
+<td>是否禁用</td>
+<td>false</td>
+</tr>
+<tr>
+<td>openCheck</td>
+<td>@Input()</td>
+<td>是否开启 ip 校验</td>
+<td>false</td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>@Input()</td>
+<td>占位文本</td>
+<td>‘请输入’</td>
+</tr>
+<tr>
+<td>nzParser</td>
+<td>@Input()</td>
+<td>格式转换</td>
+<td>value&#x3D;&gt;value</td>
+</tr>
+<tr>
+<td>formatError</td>
+<td>@Input()</td>
+<td>格式错误，用于显示错误格式校验</td>
+<td>false</td>
+</tr>
+<tr>
+<td>nzParser</td>
+<td>@Input()</td>
+<td>格式转换</td>
+<td>value&#x3D;&gt;value</td>
+</tr>
+<tr>
+<td>inputChange</td>
+<td>@Output()</td>
+<td>input 内值发生变化</td>
+<td>new Eventemitter()</td>
+</tr>
+<tr>
+<td>checkResult</td>
+<td>@Output()</td>
+<td>ip 校验结果</td>
+<td>new EventEmitter()</td>
+</tr>
+<tr>
+<td>ipCheckResult</td>
+<td>@Output()</td>
+<td>ip 校验结果</td>
+<td>new EventEmitter()</td>
+</tr>
+</tbody></table>
+<p><strong>⚠️ 注意 ：</strong> checkResult 是在 input 绑定值发生变化时触发，ipCheckResult 是在 input 失去焦点时触发。在使用组件时，checkResult 和 ipcheckResult 都能对输入的 ip 地址进行校验，监听 checkResult 同步更改表单值，监听 ipcheckResult 可以在输入结束失去焦点时对 ip 进行额外判断（比如判别是否在某一可用 ip 段内）。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span></span><br><span class="hljs-tag">  [<span class="hljs-attr">placeholder</span>]=<span class="hljs-string">&quot;forAdvanceSearch ? (&#x27;input&#x27; | translate) + (placeholder | translate) : (placeholder | translate)&quot;</span></span><br><span class="hljs-tag">  #<span class="hljs-attr">inputElement</span></span><br><span class="hljs-tag">  <span class="hljs-attr">nz-input</span></span><br><span class="hljs-tag">  [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;showipValue&quot;</span></span><br><span class="hljs-tag">  [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;disabled&quot;</span></span><br><span class="hljs-tag">  [<span class="hljs-attr">class.error</span>]=<span class="hljs-string">&quot;formateError&quot;</span></span><br><span class="hljs-tag">  [<span class="hljs-attr">class.ok</span>]=<span class="hljs-string">&quot;!formateError&quot;</span></span><br><span class="hljs-tag">  (<span class="hljs-attr">ngModelChange</span>)=<span class="hljs-string">&quot;ngModelChangeValue($event)&quot;</span></span><br><span class="hljs-tag">  (<span class="hljs-attr">blur</span>)=<span class="hljs-string">&quot;keyUp()&quot;</span></span><br><span class="hljs-tag">  (<span class="hljs-attr">keydown</span>)=<span class="hljs-string">&quot;onKeyDown($event)&quot;</span></span><br><span class="hljs-tag">/&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="1-3-格式校验及转换"><a href="#1-3-格式校验及转换" class="headerlink" title="1.3 格式校验及转换"></a>1.3 格式校验及转换</h2><h3 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h3><p>目标：将”123123123”转换成“123.123.123”</p>
+<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><ul>
+<li>判断上一个操作的按键是否为清除键”Backspace”，如果是则跳过后续操作。</li>
+<li>去除空格</li>
+<li>中文标点转换为英文标点，”。”&#x3D;&gt;”.”</li>
+<li>标点去重</li>
+<li>去除非数字字符</li>
+<li>格式转换（若未输入”.”，则自动用”.”拼接）</li>
+</ul>
+<h3 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//该函数是(ngModelChange)绑定的事件</span><br><span class="hljs-title function_">ngModelChangeValue</span>(<span class="hljs-params">value:<span class="hljs-built_in">string</span></span>)&#123;<br>  <span class="hljs-comment">//1.判断上一个操作的按键是否为清除键&quot;Backspace&quot;，如果是则仅抛出inputChange事件，跳过后续操作。</span><br>  <span class="hljs-comment">//preEvent在keyDown事件中进行更新</span><br>  <span class="hljs-keyword">if</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">preEvent</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">preEvent</span> === <span class="hljs-string">&#x27;Backspace&#x27;</span>)&#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">inputChange</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span>)<br>    <span class="hljs-keyword">return</span><br>  &#125;<br><br>  <span class="hljs-comment">//修改格式</span><br>  conste temp =<br>  value.<span class="hljs-title function_">trim</span>() <span class="hljs-comment">//2.去除空格</span><br>  .<span class="hljs-title function_">replace</span>(<span class="hljs-string">&#x27;/。/g&#x27;</span>,<span class="hljs-string">&#x27;.&#x27;</span>) <span class="hljs-comment">//3.中文标点转换为英文标点，&quot;。&quot;=&gt;&quot;.&quot;</span><br>  .<span class="hljs-title function_">replace</span>(<span class="hljs-string">&#x27;/(\.)(\1*)/g&#x27;</span>) <span class="hljs-comment">//4.标点去重</span><br>  .<span class="hljs-property">replace</span>（<span class="hljs-string">&#x27;/^\d\./g&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>）<span class="hljs-comment">//5.去除非数字字符</span><br><br>  <span class="hljs-comment">//将处理后的ip地址进行格式转换</span><br>  <span class="hljs-keyword">const</span> <span class="hljs-attr">ips</span>:<span class="hljs-built_in">string</span>[] = temp.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;.&#x27;</span>).<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">v,index</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> index &lt;= <span class="hljs-number">3</span>;<br>  &#125;)<br>  <span class="hljs-keyword">const</span> result = <span class="hljs-string">&#x27;&#x27;</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> k = <span class="hljs-number">0</span> ; k &lt; ips.<span class="hljs-property">length</span> ; k++)&#123;<br>    conste te = ips[k].<span class="hljs-title function_">substr</span>(<span class="hljs-number">3</span>)<br>     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> k = <span class="hljs-number">0</span>; k &lt; ips.<span class="hljs-property">length</span>; k++)&#123;<br>      <span class="hljs-keyword">const</span> te = ips[k].<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>)<br>      <span class="hljs-keyword">if</span> (k &lt; ips.<span class="hljs-property">length</span> -<span class="hljs-number">1</span> || (te.<span class="hljs-property">length</span> ===<span class="hljs-number">3</span> &amp;&amp; k!==<span class="hljs-number">3</span>)) &#123;<br>        result += (te +<span class="hljs-string">&#x27;.&#x27;</span>)<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        result += te<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">//更新input组件值</span><br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">inputElement</span>.<span class="hljs-property">nativeElement</span>.<span class="hljs-property">value</span> = reault;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">showipValue</span> = result;<span class="hljs-comment">//还必须要修改组件的值，但是已经有ngModel了为什么没生效</span><br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">inputChange</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="2-ipv4-格式范围选择输入框"><a href="#2-ipv4-格式范围选择输入框" class="headerlink" title="2 ipv4 格式范围选择输入框"></a>2 ipv4 格式范围选择输入框</h1><img src="ipv4-range.jpg" srcset="/img/loading.gif" lazyload width="400" title="ipv4-range组件"/>
+
+<p>ts 属性：</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>装饰器&#x2F;类型</th>
+<th>含义</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>inputModel</td>
+<td>@Input()</td>
+<td>绑定模型</td>
+<td></td>
+</tr>
+<tr>
+<td>operatorMap</td>
+<td>@Input()</td>
+<td>操作下拉列表</td>
+<td></td>
+</tr>
+<tr>
+<td>ipv4ValueEmit</td>
+<td>@Output()</td>
+<td>参数值发生变化时触发</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="2-1-使用方法"><a href="#2-1-使用方法" class="headerlink" title="2.1 使用方法"></a>2.1 使用方法</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">app-ipv4-range</span></span><br><span class="hljs-tag">  [<span class="hljs-attr">operatorMap</span>]=<span class="hljs-string">&quot;operatorMap&quot;</span></span><br><span class="hljs-tag">  [<span class="hljs-attr">inputModel</span>]=<span class="hljs-string">&quot;params&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;width-100&quot;</span></span><br><span class="hljs-tag">  (<span class="hljs-attr">ipv4ValueEmit</span>)=<span class="hljs-string">&quot;paramValueChange($event, ci, pi)&quot;</span></span><br><span class="hljs-tag">&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">app-ipv4-range</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>在 paramValueChange 中，将组件内容更新至表单项。<br>相关的下拉框配置、提交表格前的字符串拼接，均在调用<app-ipv4-rang>的组件中实现。</p>
+<h2 id="2-1-关键代码"><a href="#2-1-关键代码" class="headerlink" title="2.1 关键代码"></a>2.1 关键代码</h2><h3 id="模板内容"><a href="#模板内容" class="headerlink" title="模板内容"></a>模板内容</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nz-row</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;div-vertical-middle&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;operate-cond&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">nz-select</span></span><br><span class="hljs-tag">      [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;inputModel.operator&quot;</span></span><br><span class="hljs-tag">      (<span class="hljs-attr">ngModelChange</span>)=<span class="hljs-string">&quot;valueChange($event, null)&quot;</span></span><br><span class="hljs-tag">    &gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">nz-option</span></span><br><span class="hljs-tag">        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let op of operatorMap&quot;</span></span><br><span class="hljs-tag">        [<span class="hljs-attr">nzLabel</span>]=<span class="hljs-string">&quot;op.name&quot;</span></span><br><span class="hljs-tag">        [<span class="hljs-attr">nzValue</span>]=<span class="hljs-string">&quot;op.value&quot;</span></span><br><span class="hljs-tag">      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nz-option</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">nz-select</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> [<span class="hljs-attr">ngSwitch</span>]=<span class="hljs-string">&quot;inputModel.operator&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 选择ip段 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;&#x27;至&#x27;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;div-vertical-middle match-expr-cond&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nz-col</span> <span class="hljs-attr">nzSpan</span>=<span class="hljs-string">&quot;11&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">app-ipv4-input</span></span><br><span class="hljs-tag">          <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;float: left&quot;</span></span><br><span class="hljs-tag">          <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;width-100&quot;</span></span><br><span class="hljs-tag">          [<span class="hljs-attr">key</span>]=<span class="hljs-string">&quot;inputModel.il8n&quot;</span></span><br><span class="hljs-tag">          [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;inputModel.valueFrom&quot;</span></span><br><span class="hljs-tag">          [<span class="hljs-attr">forAdvanceSearch</span>]=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">          (<span class="hljs-attr">inputChange</span>)=<span class="hljs-string">&quot;valueChange($event, &#x27;valueFrom&#x27;)&quot;</span></span><br><span class="hljs-tag">        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">app-ipv4-input</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nz-col</span> <span class="hljs-attr">nzSpan</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: center; line-height: 32px&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-white&quot;</span>&gt;</span>至<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nz-col</span> <span class="hljs-attr">nzSpan</span>=<span class="hljs-string">&quot;11&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">app-ipv4-input</span></span><br><span class="hljs-tag">          <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;float: left&quot;</span></span><br><span class="hljs-tag">          <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;width-100&quot;</span></span><br><span class="hljs-tag">          [<span class="hljs-attr">key</span>]=<span class="hljs-string">&quot;inputModel.il8n&quot;</span></span><br><span class="hljs-tag">          [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;inputModel.valueTo&quot;</span></span><br><span class="hljs-tag">          [<span class="hljs-attr">forAdvanceSearch</span>]=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">          (<span class="hljs-attr">inputChange</span>)=<span class="hljs-string">&quot;valueChange($event, &#x27;valueTo&#x27;)&quot;</span></span><br><span class="hljs-tag">        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">app-ipv4-input</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 包含 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;&#x27;in&#x27;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;match-expr-cond&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span></span><br><span class="hljs-tag">        <span class="hljs-attr">nz-input</span></span><br><span class="hljs-tag">        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;width-100&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;&#123;&#123; &#x27;input&#x27; | translate &#125;&#125;&#123;&#123; inputModel.il8n | translate &#125;&#125;&quot;</span></span><br><span class="hljs-tag">        [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;inputModel.value&quot;</span></span><br><span class="hljs-tag">      /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 不包含 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;&#x27;nin&#x27;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;match-expr-cond&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span></span><br><span class="hljs-tag">        <span class="hljs-attr">nz-input</span></span><br><span class="hljs-tag">        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;width-100&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;&#123;&#123; &#x27;input&#x27; | translate &#125;&#125;&#123;&#123; inputModel.il8n | translate &#125;&#125;&quot;</span></span><br><span class="hljs-tag">        [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;inputModel.value&quot;</span></span><br><span class="hljs-tag">      /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 正则 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;&#x27;matches&#x27;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;match-expr-cond&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span></span><br><span class="hljs-tag">        <span class="hljs-attr">nz-input</span></span><br><span class="hljs-tag">        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;width-100&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;&#123;&#123; &#x27;input&#x27; | translate &#125;&#125;&#123;&#123; inputModel.il8n | translate &#125;&#125;&quot;</span></span><br><span class="hljs-tag">        [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;inputModel.value&quot;</span></span><br><span class="hljs-tag">      /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 默认情况 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngSwitchDefault</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;match-expr-cond&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">app-ipv4-input</span></span><br><span class="hljs-tag">        <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%&quot;</span></span><br><span class="hljs-tag">        *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;inputModel.operator !== &#x27;至&#x27;&quot;</span></span><br><span class="hljs-tag">        [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;inputModel.value&quot;</span></span><br><span class="hljs-tag">        [<span class="hljs-attr">key</span>]=<span class="hljs-string">&quot;inputModel.il8n&quot;</span></span><br><span class="hljs-tag">        [<span class="hljs-attr">forAdvanceSearch</span>]=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">        (<span class="hljs-attr">inputChange</span>)=<span class="hljs-string">&quot;valueChange($event, &#x27;value&#x27;)&quot;</span></span><br><span class="hljs-tag">      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">app-ipv4-input</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="ts-关键代码"><a href="#ts-关键代码" class="headerlink" title="ts 关键代码"></a>ts 关键代码</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//inputValue变化时触发事件</span><br> <span class="hljs-title function_">valueChange</span>(<span class="hljs-params">event, <span class="hljs-keyword">type</span></span>) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span>) &#123;<br>      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;value&#x27;</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">inputModel</span>.<span class="hljs-property">value</span> = event;<br>      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;valueFrom&#x27;</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">inputModel</span>.<span class="hljs-property">valueFrom</span> = event;<br>      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;valueTo&#x27;</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">inputModel</span>.<span class="hljs-property">valueTo</span> = event;<br>    &#125;<br>    <span class="hljs-comment">//向外抛出事件ipv4ValueEmit</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ipv4ValueEmit</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">inputModel</span>);<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<p>难点：</p>
+<ul>
+<li>实现可与 form 表单绑定的 input 业务组件，需要能够实现格式校验和格式转换。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>管理端通用组件封装</div>
+      <div>https://shaonan028.github.io/2024/07/02/管理端通用组件封装/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Kangaroo</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年7月2日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/07/08/%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE%E6%97%B6%E8%B8%A9%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/" title="运行项目时踩的一些坑">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">运行项目时踩的一些坑</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/07/01/%E5%80%92%E8%AE%A1%E6%97%B6/" title="倒计时">
+                        <span class="hidden-mobile">倒计时</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      
+
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
