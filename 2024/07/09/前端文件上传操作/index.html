@@ -16,21 +16,24 @@
   <meta name="author" content="Kangaroo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="手动实现一个倒计时组件，显示距离 2024 年 10 月 1 日的时间。">
+    <meta name="description" content="前端如何将文件发送至服务器，是用什么格式的数据进行传输？Blob、File、FileReader、Base64 等概念都有何关联？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="倒计时">
-<meta property="og:url" content="https://shaonan028.github.io/2024/07/01/%E5%80%92%E8%AE%A1%E6%97%B6/index.html">
+<meta property="og:title" content="一文搞懂文件上传">
+<meta property="og:url" content="https://shaonan028.github.io/2024/07/09/%E5%89%8D%E7%AB%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Kangaroo&#39;s Bolg">
-<meta property="og:description" content="手动实现一个倒计时组件，显示距离 2024 年 10 月 1 日的时间。">
+<meta property="og:description" content="前端如何将文件发送至服务器，是用什么格式的数据进行传输？Blob、File、FileReader、Base64 等概念都有何关联？">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-01T12:55:36.000Z">
-<meta property="article:modified_time" content="2024-07-01T13:08:35.197Z">
+<meta property="og:image" content="https://shaonan028.github.io/2024/07/09/%E5%89%8D%E7%AB%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%93%8D%E4%BD%9C/pic1.jpeg">
+<meta property="og:image" content="https://shaonan028.github.io/2024/07/09/%E5%89%8D%E7%AB%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%93%8D%E4%BD%9C/pic2.jpeg">
+<meta property="article:published_time" content="2024-07-09T11:07:01.000Z">
+<meta property="article:modified_time" content="2024-07-09T15:37:22.473Z">
 <meta property="article:author" content="Kangaroo">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://shaonan028.github.io/2024/07/09/%E5%89%8D%E7%AB%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%93%8D%E4%BD%9C/pic1.jpeg">
   
   
   
-  <title>倒计时 - Kangaroo&#39;s Bolg</title>
+  <title>一文搞懂文件上传 - Kangaroo&#39;s Bolg</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="倒计时"></span>
+            <span id="subtitle" data-typed-text="一文搞懂文件上传"></span>
           
         </div>
 
@@ -207,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-01 20:55" pubdate>
-          2024年7月1日 晚上
+        <time datetime="2024-07-09 19:07" pubdate>
+          2024年7月9日 晚上
         </time>
       </span>
     
@@ -219,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          64 字
+          843 字
         
       </span>
     
@@ -230,7 +233,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -267,68 +270,112 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">倒计时</h1>
+            <h1 id="seo-header">一文搞懂文件上传</h1>
             
             
               <div class="markdown-body">
                 
-                <p>手动实现一个倒计时组件，显示距离 2024 年 10 月 1 日的时间。</p>
+                <p>前端如何将文件发送至服务器，是用什么格式的数据进行传输？Blob、File、FileReader、Base64 等概念都有何关联？</p>
 <span id="more"></span>
 
-<style>
-     #div1 {
-      font-size: 50px;
-      background-color: #b5c685;
-      color: white;
-      margin:0 auto;
-      display:flex;
-      justify-content:center;
-    }
-</style>
+<p><img src="pic1.jpeg" srcset="/img/loading.gif" lazyload title="文件相关概念关系" width="600px"></img></p>
+<h1 id="1-Blob"><a href="#1-Blob" class="headerlink" title="1.Blob"></a>1.Blob</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Blob 全称为 binary large object ，即二进制大对象。blob 对象本质上是 js 中的一个对象，里面可以储存大量的二进制编码格式的数据。Blob 对象一个不可修改，从 Blob 中读取内容的唯一方法是使用 FileReader。</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">new</span> <span class="hljs-title class_">Blob</span>(array, type);<br></code></pre></td></tr></table></figure>
 
-<h1 id="倒计时"><a href="#倒计时" class="headerlink" title="倒计时"></a>倒计时</h1> <div id="div1"></div>
+<p><strong>array</strong>：由 ArrayBuffer、ArrayBufferView、Blob、DOMString 等对象构成的，将会被放进 Blob；<br><strong>options</strong>:指定两个属性（均可选）</p>
+<ul>
+<li>type:默认值为””,规定了放在在 blob 内的 MIME 类型。</li>
+<li>endings:默认为”transparent”，用于指定包含行结束符\n 的字符串如何被写入，不常用。</li>
+</ul>
+<p>示例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> blob = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Blob</span>([<span class="hljs-string">&quot;hello kangaroo&quot;</span>], &#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text/plain&quot;</span> &#125;);<br></code></pre></td></tr></table></figure>
 
+<p><img src="pic2.jpeg" srcset="/img/loading.gif" lazyload title="执行示例" width="500px"></img></p>
+<h1 id="2-FileReader"><a href="#2-FileReader" class="headerlink" title="2. FileReader"></a>2. FileReader</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>FileReader 是 HTML5 File 中的对象，它允许在客户端对用户选择的文件进行异步读取。使用 FileReader，我们可以读取用户的文件，并基于其内容执行各种操作，如预览图片、读取文本文件等。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><table>
+<thead>
+<tr>
+<th>实例方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abort()</td>
+<td>中止读取操作。在返回时，readyState 属性为 DONE。</td>
+</tr>
+<tr>
+<td>readAsArrayBuffer(file)</td>
+<td>读取文件并将其内容解读为二进制数据的 ArrayBuffer 对象。</td>
+</tr>
+<tr>
+<td>readAsBinaryString(file)</td>
+<td>读取文件并将其内容解读为二进制字符串。</td>
+</tr>
+<tr>
+<td>readAsDataURL(file)</td>
+<td>读取文件并将其内容解读为一个 base64 编码的数据 URL。</td>
+</tr>
+<tr>
+<td>readAsText(file,[encoding])</td>
+<td>读取文件并将其内容解读为纯文本。encoding 参数是可选的，表示文本的编码。</td>
+</tr>
+</tbody></table>
+<h2 id="上传图片预览案例"><a href="#上传图片预览案例" class="headerlink" title="上传图片预览案例"></a>上传图片预览案例</h2><div>
+<!-- <form method = "post" action="http://localhost/test" enctype="multipart/form-data"> -->
+<input type="file" name="file" id="test-image-file">
+<!-- </form> -->
+<p>图片预览</p>
+<div id="test-image-preview" style="border: 1px solid rgb(204, 204, 204);
+    width: 100%;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;"></div>
+</form>
+<span id="test-file-info"></span>
+
+</div>
 <script>
-       const el2 = document.getElementById("div1");
-      // 目标日期
-      const target = new Date("2024-10-01T00:00:00");
-
-      function updateCountdown() {
-        const now = new Date();
-        const timeDifference = target - now;
-
-        if (timeDifference <= 0) {
-          clearInterval(interval);
-          el2.innerHTML = "倒计时已结束";
-          return;
-        }
-
-        // 计算天、小时、分钟和秒
-        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor(
-          (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-        // 更新页面内容
-        el2.innerHTML = `${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
-      }
-
-      // 间隔1秒更新一次倒计时
-      const interval2 = setInterval(updateCountdown, 1000);
-
-      // 初始化页面内容
-      updateCountdown();
+var fileInput = document.getElementById('test-image-file')
+var info = document.getElementById('test-file-info')
+var preview = document.getElementById('test-image-preview')
+//监听change事件
+fileInput.addEventListener('change',function(){
+    //清除背景图片
+    preview.style.backgroundImage = '';
+    //检查文件是否已选择
+    if(!fileInput.value){
+        info.innerHTML = '没有选择文件'
+        console.log("切换文件")
+    }
+    //获取File引用
+    var file = fileInput.files[0]
+    //获取File信息
+    info.innerHTML = '文件：'+file.name +'<br>'+
+                     '大小：'+file.size +'<br>'+
+                     '修改'+ file.lastModified
+    if(file.type!=='image/jpeg' && file.type!=='image/png' && file.type!=='image/gif'){
+        alert('不是有效的图片文件！')
+        return;
+    }
+    //读取文件
+    var reader = new FileReader();
+    reader.onload = function(e){
+        var data = e.target.result;
+        preview.style.backgroundImage = 'url(' + data + ')' // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
+    }
+    reader.readAsDataURL(file)
+})
 </script>
 
-<h1 id="实现函数"><a href="#实现函数" class="headerlink" title="实现函数"></a>实现函数</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> el2 = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;div1&quot;</span>);<br><span class="hljs-comment">// 目标日期</span><br><span class="hljs-keyword">const</span> target = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&quot;2024-10-01T00:00:00&quot;</span>);<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">updateCountdown</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> now = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<br>  <span class="hljs-keyword">const</span> timeDifference = target - now;<br><br>  <span class="hljs-keyword">if</span> (timeDifference &lt;= <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">clearInterval</span>(interval);<br>    el2.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;倒计时已结束&quot;</span>;<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br><br>  <span class="hljs-comment">// 计算天、小时、分钟和秒</span><br>  <span class="hljs-keyword">const</span> days = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(timeDifference / (<span class="hljs-number">1000</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">24</span>));<br>  <span class="hljs-keyword">const</span> hours = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<br>    (timeDifference % (<span class="hljs-number">1000</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">24</span>)) / (<span class="hljs-number">1000</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span>)<br>  );<br>  <span class="hljs-keyword">const</span> minutes = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>((timeDifference % (<span class="hljs-number">1000</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span>)) / (<span class="hljs-number">1000</span> * <span class="hljs-number">60</span>));<br>  <span class="hljs-keyword">const</span> seconds = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>((timeDifference % (<span class="hljs-number">1000</span> * <span class="hljs-number">60</span>)) / <span class="hljs-number">1000</span>);<br><br>  <span class="hljs-comment">// 更新页面内容</span><br>  el2.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">`<span class="hljs-subst">$&#123;days&#125;</span> 天 <span class="hljs-subst">$&#123;hours&#125;</span> 小时 <span class="hljs-subst">$&#123;minutes&#125;</span> 分钟 <span class="hljs-subst">$&#123;seconds&#125;</span> 秒`</span>;<br>&#125;<br><br><span class="hljs-comment">// 间隔1秒更新一次倒计时</span><br><span class="hljs-keyword">const</span> interval2 = <span class="hljs-built_in">setInterval</span>(updateCountdown, <span class="hljs-number">1000</span>);<br><br><span class="hljs-comment">// 初始化页面内容</span><br><span class="hljs-title function_">updateCountdown</span>();<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> fileInput = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;test-image-file&quot;</span>),<br>  info = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;test-file-info&quot;</span>),<br>  preview = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;test-image-preview&quot;</span>);<br><span class="hljs-comment">// 监听change事件:</span><br>fileInput.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;change&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">// 清除背景图片:</span><br>  preview.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundImage</span> = <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-comment">// 检查文件是否选择:</span><br>  <span class="hljs-keyword">if</span> (!fileInput.<span class="hljs-property">value</span>) &#123;<br>    info.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;没有选择文件&quot;</span>;<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  <span class="hljs-comment">// 获取File引用:</span><br>  <span class="hljs-keyword">var</span> file = fileInput.<span class="hljs-property">files</span>[<span class="hljs-number">0</span>];<br>  <span class="hljs-comment">// 获取File信息:</span><br>  info.<span class="hljs-property">innerHTML</span> =<br>    <span class="hljs-string">&quot;文件: &quot;</span> +<br>    file.<span class="hljs-property">name</span> +<br>    <span class="hljs-string">&quot;&lt;br&gt;&quot;</span> +<br>    <span class="hljs-string">&quot;大小: &quot;</span> +<br>    file.<span class="hljs-property">size</span> +<br>    <span class="hljs-string">&quot;&lt;br&gt;&quot;</span> +<br>    <span class="hljs-string">&quot;修改: &quot;</span> +<br>    file.<span class="hljs-property">lastModified</span>;<br>  <span class="hljs-keyword">if</span> (<br>    file.<span class="hljs-property">type</span> !== <span class="hljs-string">&quot;image/jpeg&quot;</span> &amp;&amp;<br>    file.<span class="hljs-property">type</span> !== <span class="hljs-string">&quot;image/png&quot;</span> &amp;&amp;<br>    file.<span class="hljs-property">type</span> !== <span class="hljs-string">&quot;image/gif&quot;</span><br>  ) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;不是有效的图片文件!&quot;</span>);<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  <span class="hljs-comment">// 读取文件</span><br>  <span class="hljs-keyword">var</span> reader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>();<br>  <span class="hljs-comment">//设置fileReader异步操作回掉函数</span><br>  reader.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>    <span class="hljs-keyword">var</span> data = e.<span class="hljs-property">target</span>.<span class="hljs-property">result</span>; <span class="hljs-comment">// &#x27;data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...&#x27;</span><br>    preview.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundImage</span> = <span class="hljs-string">&quot;url(&quot;</span> + data + <span class="hljs-string">&quot;)&quot;</span>;<br>  &#125;;<br>  <span class="hljs-comment">// 以DataURL的形式读取文件:</span><br>  reader.<span class="hljs-title function_">readAsDataURL</span>(file);<br>&#125;);<br></code></pre></td></tr></table></figure>
 
-<h1 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h1><ul>
-<li>Date 对象的含义及常见方法使用</li>
-<li>使用毫秒数计算日、小时、分钟、秒的方法</li>
+<h1 id="base64-待深入"><a href="#base64-待深入" class="headerlink" title="base64(待深入)"></a>base64(待深入)</h1><p>在 JavaScript 中，有两个函数被分别用来处理解码和编码 base64 字符串：</p>
+<p>atob()：解码，解码一个 Base64 字符串；</p>
+<p>btoa()：编码，从一个字符串或者二进制数据编码一个 Base64 字符串。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023022494381696">廖雪峰——操作文件</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1XD4y1C7S3/?spm_id_from=333.788&vd_source=2ada3c3412abaaf575e01bcac9bbc6f2">视频：今天一次性给你讲清楚：File、Blob、FileReader、ArrayBuffer、Base64</a></li>
 </ul>
 
                 
@@ -347,8 +394,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>倒计时</div>
-      <div>https://shaonan028.github.io/2024/07/01/倒计时/</div>
+      <div>一文搞懂文件上传</div>
+      <div>https://shaonan028.github.io/2024/07/09/前端文件上传操作/</div>
     </div>
     <div class="license-meta">
       
@@ -360,7 +407,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月1日</div>
+          <div>2024年7月9日</div>
         </div>
       
       
@@ -392,18 +439,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/02/%E7%AE%A1%E7%90%86%E7%AB%AF%E9%80%9A%E7%94%A8%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/" title="管理端input通用组件封装">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">管理端input通用组件封装</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/01/%E4%B8%9A%E5%8A%A1%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/" title="业务知识梳理">
-                        <span class="hidden-mobile">业务知识梳理</span>
+                      <a href="/2024/07/09/%E7%9F%AD%E4%BF%A1%E6%A0%A1%E9%AA%8C%E7%A0%81%E7%BB%84%E4%BB%B6/" title="短信校验码组件">
+                        <span class="hidden-mobile">短信校验码组件</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
