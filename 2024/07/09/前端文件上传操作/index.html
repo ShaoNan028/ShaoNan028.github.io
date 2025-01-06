@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://shaonan028.github.io/2024/07/09/%E5%89%8D%E7%AB%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%93%8D%E4%BD%9C/pic1.jpeg">
 <meta property="og:image" content="https://shaonan028.github.io/2024/07/09/%E5%89%8D%E7%AB%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%93%8D%E4%BD%9C/pic2.jpeg">
 <meta property="article:published_time" content="2024-07-09T11:07:01.000Z">
-<meta property="article:modified_time" content="2024-07-09T15:37:22.473Z">
+<meta property="article:modified_time" content="2024-07-12T06:01:43.363Z">
 <meta property="article:author" content="Kangaroo">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://shaonan028.github.io/2024/07/09/%E5%89%8D%E7%AB%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%93%8D%E4%BD%9C/pic1.jpeg">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          843 字
+          1.5k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          8 分钟
+          13 分钟
         
       </span>
     
@@ -368,14 +368,38 @@ fileInput.addEventListener('change',function(){
 })
 </script>
 
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> fileInput = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;test-image-file&quot;</span>),<br>  info = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;test-file-info&quot;</span>),<br>  preview = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;test-image-preview&quot;</span>);<br><span class="hljs-comment">// 监听change事件:</span><br>fileInput.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;change&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">// 清除背景图片:</span><br>  preview.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundImage</span> = <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-comment">// 检查文件是否选择:</span><br>  <span class="hljs-keyword">if</span> (!fileInput.<span class="hljs-property">value</span>) &#123;<br>    info.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;没有选择文件&quot;</span>;<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  <span class="hljs-comment">// 获取File引用:</span><br>  <span class="hljs-keyword">var</span> file = fileInput.<span class="hljs-property">files</span>[<span class="hljs-number">0</span>];<br>  <span class="hljs-comment">// 获取File信息:</span><br>  info.<span class="hljs-property">innerHTML</span> =<br>    <span class="hljs-string">&quot;文件: &quot;</span> +<br>    file.<span class="hljs-property">name</span> +<br>    <span class="hljs-string">&quot;&lt;br&gt;&quot;</span> +<br>    <span class="hljs-string">&quot;大小: &quot;</span> +<br>    file.<span class="hljs-property">size</span> +<br>    <span class="hljs-string">&quot;&lt;br&gt;&quot;</span> +<br>    <span class="hljs-string">&quot;修改: &quot;</span> +<br>    file.<span class="hljs-property">lastModified</span>;<br>  <span class="hljs-keyword">if</span> (<br>    file.<span class="hljs-property">type</span> !== <span class="hljs-string">&quot;image/jpeg&quot;</span> &amp;&amp;<br>    file.<span class="hljs-property">type</span> !== <span class="hljs-string">&quot;image/png&quot;</span> &amp;&amp;<br>    file.<span class="hljs-property">type</span> !== <span class="hljs-string">&quot;image/gif&quot;</span><br>  ) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;不是有效的图片文件!&quot;</span>);<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  <span class="hljs-comment">// 读取文件</span><br>  <span class="hljs-keyword">var</span> reader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>();<br>  <span class="hljs-comment">//设置fileReader异步操作回掉函数</span><br>  reader.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>    <span class="hljs-keyword">var</span> data = e.<span class="hljs-property">target</span>.<span class="hljs-property">result</span>; <span class="hljs-comment">// &#x27;data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...&#x27;</span><br>    preview.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundImage</span> = <span class="hljs-string">&quot;url(&quot;</span> + data + <span class="hljs-string">&quot;)&quot;</span>;<br>  &#125;;<br>  <span class="hljs-comment">// 以DataURL的形式读取文件:</span><br>  reader.<span class="hljs-title function_">readAsDataURL</span>(file);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> fileInput = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;test-image-file&quot;</span>),<br>  info = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;test-file-info&quot;</span>),<br>  preview = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;test-image-preview&quot;</span>);<br><span class="hljs-comment">// 监听change事件:</span><br>fileInput.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;change&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">// 清除背景图片:</span><br>  preview.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundImage</span> = <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-comment">// 检查文件是否选择:</span><br>  <span class="hljs-keyword">if</span> (!fileInput.<span class="hljs-property">value</span>) &#123;<br>    info.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;没有选择文件&quot;</span>;<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  <span class="hljs-comment">// 获取File引用:</span><br>  <span class="hljs-keyword">var</span> file = fileInput.<span class="hljs-property">files</span>[<span class="hljs-number">0</span>];<br>  <span class="hljs-comment">// 获取File信息:</span><br>  info.<span class="hljs-property">innerHTML</span> =<br>    <span class="hljs-string">&quot;文件: &quot;</span> +<br>    file.<span class="hljs-property">name</span> +<br>    <span class="hljs-string">&quot;&lt;br&gt;&quot;</span> +<br>    <span class="hljs-string">&quot;大小: &quot;</span> +<br>    file.<span class="hljs-property">size</span> +<br>    <span class="hljs-string">&quot;&lt;br&gt;&quot;</span> +<br>    <span class="hljs-string">&quot;修改: &quot;</span> +<br>    file.<span class="hljs-property">lastModified</span>;<br>  <span class="hljs-keyword">if</span> (<br>    file.<span class="hljs-property">type</span> !== <span class="hljs-string">&quot;image/jpeg&quot;</span> &amp;&amp;<br>    file.<span class="hljs-property">type</span> !== <span class="hljs-string">&quot;image/png&quot;</span> &amp;&amp;<br>    file.<span class="hljs-property">type</span> !== <span class="hljs-string">&quot;image/gif&quot;</span><br>  ) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;不是有效的图片文件!&quot;</span>);<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  <span class="hljs-comment">// 读取文件</span><br>  <span class="hljs-keyword">var</span> reader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>();<br>  <span class="hljs-comment">//设置fileReader异步操作回调函数</span><br>  reader.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>    <span class="hljs-keyword">var</span> data = e.<span class="hljs-property">target</span>.<span class="hljs-property">result</span>; <span class="hljs-comment">// &#x27;data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...&#x27;</span><br>    preview.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundImage</span> = <span class="hljs-string">&quot;url(&quot;</span> + data + <span class="hljs-string">&quot;)&quot;</span>;<br>  &#125;;<br>  <span class="hljs-comment">// 以DataURL的形式读取文件:</span><br>  reader.<span class="hljs-title function_">readAsDataURL</span>(file);<br>&#125;);<br></code></pre></td></tr></table></figure>
 
-<h1 id="base64-待深入"><a href="#base64-待深入" class="headerlink" title="base64(待深入)"></a>base64(待深入)</h1><p>在 JavaScript 中，有两个函数被分别用来处理解码和编码 base64 字符串：</p>
+<h1 id="3-base64"><a href="#3-base64" class="headerlink" title="3.base64"></a>3.base64</h1><p>Base64 是常见的用于传输 8Bit 字节码的编码方式之一，基于 64 个可打印字符来标识二进制数据点方法。</p>
+<p>在 JavaScript 中，有两个函数被分别用来处理解码和编码 base64 字符串：</p>
 <p>atob()：解码，解码一个 Base64 字符串；</p>
 <p>btoa()：编码，从一个字符串或者二进制数据编码一个 Base64 字符串。</p>
+<p>记忆：字母表顺序从高到低，a-&gt;b 是解码，从低到高，b-&gt;a 是编码</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38157825/article/details/124251372">认识 Base64，看这篇足够了</a></p>
+</blockquote>
+<h1 id="4-大文件上传"><a href="#4-大文件上传" class="headerlink" title="4.大文件上传"></a>4.大文件上传</h1><p>上传大型文件时，可能会因为如下原因产生文件上传中断。</p>
+<ol>
+<li>文件上传超时。原因是前端请求框架默认限制最大请求时长，或者是 nginx（或其他代理&#x2F;网管）限制了最大请求时长。</li>
+<li>文件大小超限。原因在于后端对单个请求大小做了限制，一般 nginx 和 server 都会做这个限制。</li>
+<li>上传耗时久。</li>
+<li>由于各种网络原因上传失败，且失败之后需要从头开始。</li>
+</ol>
+<h2 id="4-1-分片上传"><a href="#4-1-分片上传" class="headerlink" title="4.1 分片上传"></a>4.1 分片上传</h2><h3 id="4-1-2-文件分片"><a href="#4-1-2-文件分片" class="headerlink" title="4.1.2 文件分片"></a>4.1.2 文件分片</h3><p>其中，start 和 end 代表 blob 里的下标，contentType 表示分片后生成文件的文档类型（很少使用）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> blob = instanceOfBlob.<span class="hljs-title function_">slice</span>([start,[,end[,contentType]]])<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-1-2-文件合并"><a href="#4-1-2-文件合并" class="headerlink" title="4.1.2 文件合并"></a>4.1.2 文件合并</h3><p>文件合并文件合并方案有这么几种。</p>
+<ol>
+<li>前端发送切片完成后，发送一个合并请求，后端收到请求后，将之前上传的切片文件合并。</li>
+<li>后台记录切片文件上传数据，当后台检测到切片上传完成后，自动完成合并。</li>
+<li>创建一个和源文件大小相同的文件，根据切片文件的起止位置直接将切片写入对应位置。<br>这三种方案中，前两种都是比较通用的方案，且都是可行的，方案一的代价在于多发了一次请求，极小的概率会出现文件上传成功，但是合并请求发送失败的情况，好处就是流程比较清晰。方案二比方案一少了一次请求，代价是每次上传结束后需要判断当前切片是否是最后一个切片，需要在数据库中维护切片的状态。</li>
+</ol>
+<p>方案三比较好的，相当于直接省略了文件合并的步骤，速度比较快。但是不用语言的实现难度不同。如果没有合适的 API 的话，自己实现的难度很大。</p>
+<h2 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h2><h1 id="获取文件上传进度"><a href="#获取文件上传进度" class="headerlink" title="获取文件上传进度"></a>获取文件上传进度</h1><p>XMLHttpRequest提供了事件progress，会在请求收到数据的时候被周期性触发，返回文件已上传的大小和总大小，用于检测文件上传进度。</p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023022494381696">廖雪峰——操作文件</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1XD4y1C7S3/?spm_id_from=333.788&vd_source=2ada3c3412abaaf575e01bcac9bbc6f2">视频：今天一次性给你讲清楚：File、Blob、FileReader、ArrayBuffer、Base64</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/af-F2goqnfMEo_yT_yFUMw">大规格文件的上传优化</a></li>
 </ul>
 
                 
@@ -438,6 +462,12 @@ fileInput.addEventListener('change',function(){
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/07/11/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/" title="一文搞懂下载文件">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">一文搞懂下载文件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

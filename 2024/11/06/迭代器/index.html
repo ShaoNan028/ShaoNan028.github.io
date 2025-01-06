@@ -16,23 +16,21 @@
   <meta name="author" content="Kangaroo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="点击获取短信时，需要先输入正确的图片校验码，防止自动化攻击。会涉及关于 Blob 文件、FileReader 等方面的知识点。">
+    <meta name="description" content="迭代器知识点总结迭代器定义迭代协议可迭代对象问题以下是一些前端面试中关于迭代器可能会问到的问题： 基础概念类简单说一下什么是 JavaScript 中的迭代器？  （试答）迭代器是实现了迭代协议的接口，使用迭代器可以实现对有序集合的遍历。  （红宝书内容）“迭代器是一个可以由任意对象实现的接口，支持连续获取对象产出的每一个值。任何实现 Iterable 接口的对象都有一个 Symbol.itera">
 <meta property="og:type" content="article">
-<meta property="og:title" content="短信校验码组件">
-<meta property="og:url" content="https://shaonan028.github.io/2024/07/09/%E7%9F%AD%E4%BF%A1%E6%A0%A1%E9%AA%8C%E7%A0%81%E7%BB%84%E4%BB%B6/index.html">
+<meta property="og:title" content="迭代器">
+<meta property="og:url" content="https://shaonan028.github.io/2024/11/06/%E8%BF%AD%E4%BB%A3%E5%99%A8/index.html">
 <meta property="og:site_name" content="Kangaroo&#39;s Bolg">
-<meta property="og:description" content="点击获取短信时，需要先输入正确的图片校验码，防止自动化攻击。会涉及关于 Blob 文件、FileReader 等方面的知识点。">
+<meta property="og:description" content="迭代器知识点总结迭代器定义迭代协议可迭代对象问题以下是一些前端面试中关于迭代器可能会问到的问题： 基础概念类简单说一下什么是 JavaScript 中的迭代器？  （试答）迭代器是实现了迭代协议的接口，使用迭代器可以实现对有序集合的遍历。  （红宝书内容）“迭代器是一个可以由任意对象实现的接口，支持连续获取对象产出的每一个值。任何实现 Iterable 接口的对象都有一个 Symbol.itera">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://shaonan028.github.io/2024/07/09/%E7%9F%AD%E4%BF%A1%E6%A0%A1%E9%AA%8C%E7%A0%81%E7%BB%84%E4%BB%B6/pic1.jpeg">
-<meta property="article:published_time" content="2024-07-09T03:51:17.000Z">
-<meta property="article:modified_time" content="2024-07-09T11:03:54.812Z">
+<meta property="article:published_time" content="2024-11-06T08:47:38.000Z">
+<meta property="article:modified_time" content="2024-11-07T01:53:24.771Z">
 <meta property="article:author" content="Kangaroo">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://shaonan028.github.io/2024/07/09/%E7%9F%AD%E4%BF%A1%E6%A0%A1%E9%AA%8C%E7%A0%81%E7%BB%84%E4%BB%B6/pic1.jpeg">
   
   
   
-  <title>短信校验码组件 - Kangaroo&#39;s Bolg</title>
+  <title>迭代器 - Kangaroo&#39;s Bolg</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="短信校验码组件"></span>
+            <span id="subtitle" data-typed-text="迭代器"></span>
           
         </div>
 
@@ -209,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-09 11:51" pubdate>
-          2024年7月9日 中午
+        <time datetime="2024-11-06 16:47" pubdate>
+          2024年11月6日 下午
         </time>
       </span>
     
@@ -221,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          54 字
+          1.3k 字
         
       </span>
     
@@ -232,7 +230,7 @@
         
         
         
-          1 分钟
+          12 分钟
         
       </span>
     
@@ -269,18 +267,63 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">短信校验码组件</h1>
+            <h1 id="seo-header">迭代器</h1>
             
             
               <div class="markdown-body">
                 
-                <p>点击获取短信时，需要先输入正确的图片校验码，防止自动化攻击。会涉及关于 Blob 文件、FileReader 等方面的知识点。</p>
-<span id="more"></span>
+                <h1 id="迭代器知识点总结"><a href="#迭代器知识点总结" class="headerlink" title="迭代器知识点总结"></a>迭代器知识点总结</h1><h2 id="迭代器定义"><a href="#迭代器定义" class="headerlink" title="迭代器定义"></a>迭代器定义</h2><h2 id="迭代协议"><a href="#迭代协议" class="headerlink" title="迭代协议"></a>迭代协议</h2><h2 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h2><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>以下是一些前端面试中关于迭代器可能会问到的问题：</p>
+<h2 id="基础概念类"><a href="#基础概念类" class="headerlink" title="基础概念类"></a>基础概念类</h2><p>简单说一下什么是 JavaScript 中的迭代器？</p>
+<ul>
+<li><p>（试答）迭代器是实现了迭代协议的接口，使用迭代器可以实现对有序集合的遍历。</p>
+</li>
+<li><p>（红宝书内容）“迭代器是一个可以由任意对象实现的接口，支持连续获取对象产出的每一个值。任何实现 Iterable 接口的对象都有一个 Symbol.iterator 属性，这个属性引用默认迭代器。默认迭代器就像一个迭代器工厂，也就是一个函数，调用之后会产生一个实现 Iterator 接口的对象。</p>
+</li>
+</ul>
+<p>迭代器必须通过连续调用 next()方法才能连续取得值，这个方法返回一个 IteratorObject。这个对象包含一个 done 属性和一个 value 属性。前者是一个布尔值，表示是否还有更多值可以访问；后者包含迭代器返回的当前值。这个接口可以通过手动反复调用 next()方法来消费，也可以通过原生消费者，比如 for-of 循环来自动消费。”</p>
+<p>迭代器协议包含哪些内容？它要求迭代器对象必须具备什么方法？</p>
+<ul>
+<li>（试答）迭代器协议包含了迭代的具体实现方法，比如 next(),return(),其中，next()是必选，它会返回一个对象，包含两个属性，分别是 done 和 value,done 返回布尔值，当为 false 时说明后续还有可迭代的内容，此时的 value 为当前迭代变量的值，当 done 为 true 时，说明后续无可迭代的内容，此时的 value 可赋值为 undefiend 或者不赋值。</li>
+</ul>
+<p>请解释一下迭代器中的 next()方法的作用和返回值的结构。</p>
+<ul>
+<li>(试答)next()方法是为了实现对有序集合的迭代，具体可参考上个问题的答案。</li>
+</ul>
+<h2 id="与其他概念关联类"><a href="#与其他概念关联类" class="headerlink" title="与其他概念关联类"></a>与其他概念关联类</h2><p>迭代器和可迭代对象有什么关系？如何判断一个对象是可迭代对象？</p>
+<ul>
+<li>（试答）迭代器是一种临时对象，在对可迭代对象进行迭代时，会创建一个迭代器对象，来实现对可迭代对象的遍历。<br>可迭代对象都具有一个属性[Symbol.iteraotr],这个属性指向一个工厂函数，执行该工厂函数能够创建一个迭代器对象，所以可以通过打印对象的这个属性，用于判断这个对象是否为可迭代对象。</li>
+</ul>
+<p>在 JavaScript 中，有哪些内置的可迭代对象？请举例。</p>
+<ul>
+<li>可迭代对象有一个比较通用的特性就是有限集合，因此，在 JavaScript 中，可迭代对象包含如下内容：<ol>
+<li>字符串</li>
+<li>数组</li>
+<li>集合 Set</li>
+<li>映射 Map</li>
+<li>arguments 对象</li>
+<li>NodeList 等 DOM 集合类型</li>
+</ol>
+</li>
+</ul>
+<p>生成器函数和迭代器之间有什么联系？生成器函数是如何简化迭代器的创建的？<br>请说明 yield 关键字在生成器函数（与迭代器相关）中的作用。</p>
+<h2 id="应用场景类"><a href="#应用场景类" class="headerlink" title="应用场景类"></a>应用场景类</h2><p>在什么情况下你会选择使用迭代器来处理数据？能否举一个实际的前端开发场景的例子？</p>
+<ul>
+<li>（试答）在需要对数据进行遍历的时候，我会选择使用迭代器来处理数据。<br>比如在后台管理系统中，会涉及到定制列表的功能，即用户自定义展示列，前端根据后端返回的列表类别来渲染对应的表头，此时就需要对返回的数组对象进行迭代，并生成对应的表单结构。</li>
+</ul>
+<p>在前端开发中，如何使用迭代器来优化对复杂数据结构（如树形结构）的遍历？</p>
+<ul>
+<li>（好问题，研究一下）<br>在实际应用中，树型结构是通过嵌套的对象结构进行返回的，<br>首先，我们假设不能使用迭代器对树型结构进行遍历。那么可使用的</li>
+</ul>
+<p>对于处理大量数据的列表，迭代器相比传统的遍历方式（如 for 循环遍历数组）有什么优势？</p>
+<h2 id="异步迭代器相关（如果涉及相关技术栈）"><a href="#异步迭代器相关（如果涉及相关技术栈）" class="headerlink" title="异步迭代器相关（如果涉及相关技术栈）"></a>异步迭代器相关（如果涉及相关技术栈）</h2><p>什么是异步迭代器？它和普通迭代器有什么区别？<br>在哪些前端场景中会用到异步迭代器？比如在处理网络请求返回的大量数据块时，你会如何运用异步迭代器？<br>请解释一下 for await…of 循环和异步迭代器的关系，以及它在前端开发中的使用场景。</p>
+<h2 id="代码实现类"><a href="#代码实现类" class="headerlink" title="代码实现类"></a>代码实现类</h2><p>请手写一个简单的迭代器，实现对一个给定数组的遍历。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> makeArrayInterator = <span class="hljs-keyword">function</span> (<span class="hljs-params">arr</span>) &#123;<br>    <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> &#123;<br>        <span class="hljs-title function_">next</span>(<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">if</span> (index &lt; arr.<span class="hljs-property">length</span>) &#123;<br>                <span class="hljs-keyword">return</span> &#123; <span class="hljs-attr">done</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">value</span>: arr[index++] &#125;;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">return</span> &#123; <span class="hljs-attr">done</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">value</span>: <span class="hljs-literal">undefined</span> &#125;;<br>            &#125;<br>        &#125;,<br>    &#125;;<br>&#125;;<br><br><span class="hljs-keyword">let</span> targetArr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>];<br><span class="hljs-comment">//此处iterator就是迭代器对象</span><br><span class="hljs-keyword">let</span> iterator = <span class="hljs-title function_">makeArrayInterator</span>(targetArr);<br><br><span class="hljs-keyword">let</span> result = iterator.<span class="hljs-title function_">next</span>();<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;第一个result&quot;</span>, result);<br><span class="hljs-keyword">while</span> (!result.<span class="hljs-property">done</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result.<span class="hljs-property">value</span>);<br>    result = iterator.<span class="hljs-title function_">next</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src='pic1.jpeg' title="图片校验码" width="300px"></img></p>
-<h1 id="相关基础知识"><a href="#相关基础知识" class="headerlink" title="相关基础知识"></a>相关基础知识</h1><h2 id="Blob"><a href="#Blob" class="headerlink" title="Blob"></a>Blob</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_57208584/article/details/135537236">Blob 详解</a></p>
-<h2 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a>FileReader</h2><h2 id="ngrx"><a href="#ngrx" class="headerlink" title="ngrx"></a>ngrx</h2><p><a target="_blank" rel="noopener" href="https://ngrx.io/docs">ngrx 官网</a><br><a target="_blank" rel="noopener" href="https://cn.redux.js.org/introduction/getting-started">Redux</a></p>
-<p>Rxjs</p>
+<p>用生成器函数实现一个斐波那契数列的迭代器。</p>
+<p>给定一个对象，如何将它变成一个可迭代对象？请写代码实现。</p>
+<ul>
+<li>（试答）</li>
+</ul>
 
                 
               </div>
@@ -298,8 +341,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>短信校验码组件</div>
-      <div>https://shaonan028.github.io/2024/07/09/短信校验码组件/</div>
+      <div>迭代器</div>
+      <div>https://shaonan028.github.io/2024/11/06/迭代器/</div>
     </div>
     <div class="license-meta">
       
@@ -311,7 +354,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月9日</div>
+          <div>2024年11月6日</div>
         </div>
       
       
@@ -343,9 +386,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/09/%E5%89%8D%E7%AB%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%93%8D%E4%BD%9C/" title="一文搞懂文件上传">
+                      <a href="/2024/11/14/UI%E7%BB%84%E4%BB%B6%E5%BA%93%E9%80%89%E5%9E%8B/" title="UI组件库选型">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">一文搞懂文件上传</span>
+                        <span class="hidden-mobile">UI组件库选型</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -353,8 +396,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/08/%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE%E6%97%B6%E8%B8%A9%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/" title="运行项目时踩的一些坑（管理工具相关）">
-                        <span class="hidden-mobile">运行项目时踩的一些坑（管理工具相关）</span>
+                      <a href="/2024/08/20/textarea%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" title="textarea组件开发记录">
+                        <span class="hidden-mobile">textarea组件开发记录</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
